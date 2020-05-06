@@ -1,0 +1,249 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>GYM</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700|Work+Sans:300,400,700" rel="stylesheet">
+
+  <link rel="stylesheet" href="fonts/icomoon/style.css">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+  <link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}">
+  <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css' %}">
+  <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/mediaelementplayer.min.css">
+
+
+
+  <link rel="stylesheet" href="{% static 'fonts/flaticon/font/flaticon.css' %}">
+
+  <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+
+<body style="background-image: url('/static/images/bg.jpg');">
+
+  <div class="site-wrap">
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div> <!-- .site-mobile-menu -->
+
+
+    <div class="site-navbar-wrap js-site-navbar bg-white">  
+      <div class="container">
+        <div class="site-navbar bg-light">
+          <div class="py-1">
+            <div class="row align-items-center">
+              <div class="col-2">
+                <h2 class="mb-0 site-logo"><a href="/">GYM<strong>fits</strong></a></h2>
+              </div>
+              <div class="col-10">
+                <nav class="site-navigation text-right" role="navigation">
+                  <div class="container">
+                    <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+                    <ul class="site-menu js-clone-nav d-none d-lg-block">
+                      {% if request.user.is_authenticated %}
+                      <li><a href="/admin">Admin</a></li>
+                      <li><a href="/logout">Logout</a></li>
+                      {% else %}
+                      <li><a href="/">Home</a></li>
+                      <li><a href="/">About</a></li>
+                      <li><a href="/contact">Contact</a></li>
+                      <li><a href="/admin">Admin</a></li>
+                      {% endif %}
+                    </ul>
+                  </div>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+
+    {#% include 'App/navbar.html' %#}
+    <!-- <div style="height: 113px;"></div> -->
+    <div class="slide-one-item home-slider owl-carousel">
+      <div class="site-blocks-cover inner-page" style="background-image: url(static/images/hero_b1_1.jpg);"
+        data-aos="fade" data-stellar-background-ratio="0.5">
+        <!-- <div class="container"> -->
+        <div class="row align-items-center justify-content-center">
+          <div class="col-md-7 text-center" data-aos="fade">
+            <h1>Welcome To GYMfits</h1>
+            <span class="caption d-block text-white">Find The Healthy Way</span>
+          </div>
+        </div>
+        <!-- </div> -->
+      </div>
+
+      <div class="site-blocks-cover inner-page" style="background-image: url(static/images/hero_bg_2.jpg);"
+        data-aos="fade" data-stellar-background-ratio="0.5">
+        <!-- <div class="container"> -->
+        <div class="row align-items-center justify-content-center">
+          <div class="col-md-7 text-center" data-aos="fade">
+            <h1>Optimize Your Health</h1>
+            <span class="caption d-block text-white">Effective Program</span>
+          </div>
+        </div>
+        <!-- </div> -->
+      </div>
+    </div>
+   
+    <div class="site-section">
+      <div class="container">
+        <div class="row">
+          
+          <div class="col-md-12">
+            <h2 class="site-section-heading text-center">Popular GYM's</h2>
+          </div>
+        </div>
+        
+        <div class="row">
+          {#% for i in informations %#}
+          <div class="col-md-12 block-13 nav-direction-white">
+            <div class="nonloop-block-13 owl-carousel">
+              
+        <div class="row">
+          {% for info in informations%}
+          <div class="col-md-12 text-center mb-4">
+            <div class="media-image">
+            <img src="{% static 'images/img_1.jpg'%}" alt="Image" class="img-fluid">  
+            <div class="border p-4 text-with-icon">
+              <h2 class="h5">{{info.name}}</h2>
+              <p><a href="/GYM/index">More Details</a></p>
+            </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+
+
+
+
+               <!-- 
+                {% if informations %}
+                <div class="media-image-body">
+                  <h2>{{informations.name}}</h2>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, voluptate.</p>
+                  <p><a href="#" class="btn btn-primary text-white px-4"><span class="caption">Learn More</span></a></p>
+                </div>
+                {% endif %}
+              </div>
+              -->
+                <!-- 
+              <div class="media-image">
+                <img src="{% static 'images/img_2.jpg'%}" alt="Image" class="img-fluid">
+                <div class="media-image-body">
+                  <h2>{{i.name}}</h2>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, voluptate.</p>
+                  <p><a href="#" class="btn btn-primary text-white px-4"><span class="caption">Learn More</span></a></p>
+                </div>
+              </div>
+               
+              <div class="media-image">
+                <img src="{% static 'images/img_3.jpg'%}" alt="Image" class="img-fluid">
+                <div class="media-image-body">
+                  <h2>Push Up</h2>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, voluptate.</p>
+                  <p><a href="#" class="btn btn-primary text-white px-4"><span class="caption">Learn More</span></a></p>
+                </div>
+              </div>
+              <div class="media-image">
+                <img src="{% static 'images/img_4.jpg'%}" alt="Image" class="img-fluid">
+                <div class="media-image-body">
+                  <h2>Weight Lifting</h2>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, voluptate.</p>
+                  <p><a href="#" class="btn btn-primary text-white px-4"><span class="caption">Learn More</span></a></p>
+                </div>
+              </div>
+              <div class="media-image">
+                <img src="{% static 'images/img_5.jpg'%}" alt="Image" class="img-fluid">
+                <div class="media-image-body">
+                  <h2>Body Combat</h2>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, voluptate.</p>
+                  <p><a href="#" class="btn btn-primary text-white px-4"><span class="caption">Learn More</span></a></p>
+                </div>
+              </div>
+              <div class="media-image">
+                <img src="{% static 'images/img_6.jpg'%}" alt="Image" class="img-fluid">
+                <div class="media-image-body">
+                  <h2>Body Combat</h2>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, voluptate.</p>
+                  <p><a href="#" class="btn btn-primary text-white px-4"><span class="caption">Learn More</span></a></p>
+                </div>
+              </div>
+              -->
+            </div>
+          </div>
+          {#% endfor %#}
+        </div>
+       
+      </div>
+    </div>
+   
+    <div class="site-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md-12">
+            <h2 class="site-section-heading text-center">GYM's</h2>
+          </div>
+        </div>
+        <!-- Total GYM's in the GYM  -->
+
+
+        <div class="row">
+          {% for info in informations%}
+          <div class="col-md-3 text-center mb-4">
+            
+            <div class="border p-4 text-with-icon">
+              <span class="flaticon-weightlifting icon display-4 mb-4 d-block text-primary"></span>
+              <!--  <img src="{{info.images}}" alt="image file"> -->
+              <h2 class="h5">{{info.name}}</h2>
+              
+              <label>Location:{{info.location}}</label><br>
+              <label>Prizes:{{info.pricing}}</label>
+              <p><a href="/GYM/index">More Details</a></p>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+    </div>
+    {% include 'App/footer.html' %}
+
+  </div>
+
+
+  <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+  <script src="{% static 'js/jquery-migrate-3.0.1.min.js' %}"></script>
+  <script src="{% static 'js/jquery-ui.js' %}"></script>
+  <script src="{% static 'js/popper.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+  <script src="{% static 'js/jquery.countdown.min.js' %}"></script>
+  <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap-datepicker.min.js' %}"></script>
+  <script src="{% static 'js/aos.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+</html>
