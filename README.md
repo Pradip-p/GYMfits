@@ -5,7 +5,9 @@ Creating a new project
 
 setup database:
 python manage.py migrate
-Admin: Create super user python manage.py createsuperuser
+
+Admin: Create super user
+->python manage.py createsuperuser
 
 Run Application:
 ->python manage.py runserver
