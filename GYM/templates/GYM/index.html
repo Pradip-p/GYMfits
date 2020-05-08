@@ -4,7 +4,10 @@
 <html lang="en">
 
 <head>
-  <title>{{info.name}}</title>
+  {% if info %}
+  <title>{{info}}</title>
+{% endif %}
+  
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -46,9 +49,10 @@
 
       <div class="container-fluid">
         <div class="d-flex align-items-center">
-          {% for info in informations %}
-          <div class="site-logo"><a href="/GYM/index">{{info.name}}</a></div>
-          {% endfor %}
+        
+          <div class="site-logo"><a href="/GYM/index">{{info}}</a></div>
+          
+
           <div class="ml-auto">
             <nav class="site-navigation position-relative text-right" role="navigation">
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
@@ -460,17 +464,19 @@
             <p>A personal trainer is an individual certified to have a varying degree of knowledge of general fitness involved in exercise prescription and instruction. They motivate clients by setting goals and providing feedback and accountability to clients.</p>
           </div>
         </div>
-        {% for message in info %}
+        
+
         <div class="row large-gutters">
           <div class="col-md-6 person col-lg-4 mb-4 mb-lg-0">
             <img src="{{message.pic.url}}" alt="Image" >
            
-            <h3>{{message.name}}</h3>
-            <p class="mb-4 opacity-7">{{message.trainer_type}}</p>
-            <p>{{message.about}}</p>
+
+            <h3></h3>
+            <p class="mb-4 opacity-7"></p>
+            <p></p>
           </div>
         </div>
-        {% endfor %}
+        
       </div>
     </div>
     {% include 'App/footer.html' %}

@@ -17,8 +17,9 @@ from django.contrib.auth.decorators import login_required
    # information=GymInfromation.objects.all()
     #return render(request,'GYMS/home.html',{'messages':information})
 def index(request):
+
     information=GymInfromation.objects.all()
-    print(information)
+
     return render(request,'App/index.html',{'informations':information})
 
 @login_required

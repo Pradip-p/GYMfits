@@ -13,12 +13,23 @@ from .tokens import account_activation_token
 from django.core.mail import EmailMessage  
 from django.contrib.auth.models import User
 
-#from App.models import GymInfromation
+
 # Create your views here.
-def index(request):
-    obj=GymInfromation.objects.all()
-    obj1=Trainers.objects.all()
-    return  render(request, 'GYM/index.html',{'informations':obj,'info':obj1})
+def index(request,id):
+    objects=GymInfromation.objects.all()
+    for i in objects:
+        if i.id==id:
+            return  render(request, 'GYM/index.html',{'info':i.name})
+
+    #objects=GymInfromation.objects.get(id=10)
+
+    #objects1=GymInfromation.objects.all()
+    
+    #contex={
+       # 'obj':objects,
+   # }
+
+    #return  render(request, 'GYM/index.html',{'info':objects})
 
 def registration(request):
     if request.method == 'POST':
