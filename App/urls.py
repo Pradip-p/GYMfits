@@ -13,5 +13,10 @@ path('logout/',views.logout, name='logout'),
 #path('home/',views.home, name='home'),
 #path('index/',views.HomeView.as_view()),
 #path('about/',views.AboutView.as_view()),
-#path('contact/',views.ContactView.as_view()),    
+#path('contact/',views.ContactView.as_view()),  
+# path('signup/',views.signup, name='signup'),
+path('login/',views.login, name='login'),
+path('signup/',views.signup, name='signup'),  
+path('activate/<uidb64>/<token>/',views.activate, name='activate'),
+
 ]
