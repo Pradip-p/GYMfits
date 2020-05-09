@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect
-from GYM.models import Trainers
+from GYM.models import Trainers,Schedule
 from App.models import GymInfromation
 from GYM.forms import RegistrationForm
 
@@ -10,7 +10,8 @@ def index(request,id):
     objects=GymInfromation.objects.all()
     for i in objects:
         if i.id==id:
-            return  render(request, 'GYM/index.html',{'info':i.name})
+            data=Schedule.objects.all()
+            return  render(request, 'GYM/index.html',{'info':i.name,'datas':data})
 
 
 def registration(request):

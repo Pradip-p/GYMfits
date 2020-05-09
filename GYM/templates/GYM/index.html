@@ -215,248 +215,242 @@
             </ul>
             <div class="tab-content" id="myTabContent">
               <div class="tab-pane fade show active" id="monday" role="tabpanel" aria-labelledby="monday-tab">
-                <table class="table table-bordered table-custom table-striped ">
+                  {% block body%}
+                  <div class="container">
+                      <div class="row">
+                          <div class=" col md-12">
+                              <div class=" jumbotron p-3">
+                                  <table class="table table-light">
+                                      <thead >
+                                          <tr>
+                                              <th scope="col">Type</th>
+                                              <th scope="col">Shift</th>
+                                              <th scope="col">Time</th>
+                                              <th scope="col"> Trainer</th>
+                                              <th scope="col">Action</th>
+                                          </tr>
+                                      </thead>
+                                      <tbody>
+                                          {% for now in datas %}
+                                         
 
-                  <tbody>
-                    <tr>
-                      <td>Gym</td>
-                      <td>8:00am - 10:00am</td>
-                      <td>John Doe</td>
-                      <td class="text-center"><a href="/GYM/registration" class="smoothscroll">Join Now</a></td>
-                    </tr>
-                    <tr>
-                      <td>Meditation</td>
-                      <td>10:00am - 10:30am</td>
-                      <td>James Holmes</td>
-                      <td class="text-center"><a href="/GYM/registration" class="smoothscroll">Join Now</a></td>
-                    </tr>
-                    <tr>
-                      <td>Weight Lifting</td>
-                      <td>1:00pm - 2:30pm</td>
-                      <td>Ben Smith</td>
-                      <td class="text-center"><a href="/GYM/registration" class="smoothscroll">Join Now</a></td>
-                    </tr>
-                    <tr>
-                      <td>Crossfit</td>
-                      <td>3:00pm - 3:45pm</td>
-                      <td>Craig Peters</td>
-                      <td class="text-center"><a href="/GYM/registration" class="smoothscroll">Join Now</a></td>
-                    </tr>
-                    <tr>
-                      <td>Aerobics</td>
-                      <td>5:00pm - 5:30pm</td>
-                      <td>Paul Green</td>
-                      <td class="text-center"><a href="/GYM/registration" class="smoothscroll">Join Now</a></td>
-                    </tr>
-
-
-
-                  </tbody>
-                </table>
+                                          <tr>
+                                              <td>{{now.type}}</td>
+                                              <td>{{now.shift}}</td>
+                                              <td>{{now.time}}</td>
+                                              <td>{{now.trainer}}</td>
+                                              <th>
+                                                <a href="/signup" class="nav-link">Join Now</a>
+                                              </th>
+                                          </tr>
+              
+                                          {% endfor %}
+                                      </tbody>
+                                  </table>
+                              </div>    
+                          </div>
+                      </div>
+                  </div>
+                  {% endblock%}
               </div>
+
               <div class="tab-pane fade" id="tuesday" role="tabpanel" aria-labelledby="tuesday-tab">
-                <table class="table table-bordered table-custom table-striped ">
+                {#% block body%#}
+                <div class="container">
+                    <div class="row">
+                        <div class=" col md-12">
+                            <div class=" jumbotron p-3">
+                                <table class="table table-light">
+                                    <thead >
+                                        <tr>
+                                            <th scope="col">Type</th>
+                                            <th scope="col">Start Time</th>
+                                            <th scope="col">End Time</th>
+                                            <th scope="col"> Trainer</th>
+                                            <th scope="col">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                      {% for now in datas %}
+                                     
 
-                  <tbody>
-                    <tr>
-                      <td>Gym</td>
-                      <td>8:00am - 10:00am</td>
-                      <td>John Doe</td>
-                      <td class="text-center"><a href="/GYM/registration" class="smoothscroll">Join Now</a></td>
-                    </tr>
-                    <tr>
-                      <td>Meditation</td>
-                      <td>10:00am - 10:30am</td>
-                      <td>James Holmes</td>
-                      <td class="text-center"><a href="/GYM/registration" class="smoothscroll">Join Now</a></td>
-                    </tr>
-                    <tr>
-                      <td>Weight Lifting</td>
-                      <td>1:00pm - 2:30pm</td>
-                      <td>Ben Smith</td>
-                      <td class="text-center"><a href="/GYM/registration" class="smoothscroll">Join Now</a></td>
-                    </tr>
-                    <tr>
-                      <td>Crossfit</td>
-                      <td>3:00pm - 3:45pm</td>
-                      <td>Craig Peters</td>
-                      <td class="text-center"><a href="/GYM/registration" class="smoothscroll">Join Now</a></td>
-                    </tr>
-                    <tr>
-                      <td>Aerobics</td>
-                      <td>5:00pm - 5:30pm</td>
-                      <td>Paul Green</td>
-                      <td class="text-center"><a href="/GYM/registration" class="smoothscroll">Join Now</a></td>
-                    </tr>
-
-
-
-                  </tbody>
-                </table>
+                                      <tr>
+                                          <td>{{now.type}}</td>
+                                          <td>{{now.shift}}</td>
+                                          <td>{{now.time}}</td>
+                                          <td>{{now.trainer}}</td>
+                                          <th>Join Now</th>
+                                      </tr>
+          
+                                      {% endfor %}
+                                  </tbody>
+                                </table>
+                            </div>    
+                        </div>
+                    </div>
+                </div>
+                {#% endblock%#}
               </div>
+
               <div class="tab-pane fade" id="wednesday" role="tabpanel" aria-labelledby="wednesday-tab">
-                <table class="table table-bordered table-custom table-striped ">
+                {#% block body%#}
+                  <div class="container">
+                      <div class="row">
+                          <div class=" col md-12">
+                              <div class=" jumbotron p-3">
+                                  <table class="table table-light">
+                                      <thead >
+                                          <tr>
+                                              <th scope="col">Type</th>
+                                              <th scope="col">Start Time</th>
+                                              <th scope="col">End Time</th>
+                                              <th scope="col"> Trainer</th>
+                                              <th scope="col">Action</th>
+                                          </tr>
+                                      </thead>
+                                      <tbody>
+                                          {#% for now in datas %#}
+                                         
+                                          <tr>
+                                              <td>GYM</td>
+                                              <td>3:00PM</td>
+                                              <td>4:00PM</td>
+                                              <td>Pradip</td>
+                                              <th>Join Now</th>
+                                          </tr>
+              
+                                          {#% endfor %#}
+                                      </tbody>
+                                  </table>
+                              </div>    
+                          </div>
+                      </div>
+                  </div>
+                  {#% endblock%#}
 
-                  <tbody>
-                    <tr>
-                      <td>Gym</td>
-                      <td>8:00am - 10:00am</td>
-                      <td>John Doe</td>
-                      <td class="text-center"><a href="/GYM/registration" class="smoothscroll">Join Now</a></td>
-                    </tr>
-                    <tr>
-                      <td>Meditation</td>
-                      <td>10:00am - 10:30am</td>
-                      <td>James Holmes</td>
-                      <td class="text-center"><a href="/GYM/registration" class="smoothscroll">Join Now</a></td>
-                    </tr>
-                    <tr>
-                      <td>Weight Lifting</td>
-                      <td>1:00pm - 2:30pm</td>
-                      <td>Ben Smith</td>
-                      <td class="text-center"><a href="/GYM/registration" class="smoothscroll">Join Now</a></td>
-                    </tr>
-                    <tr>
-                      <td>Crossfit</td>
-                      <td>3:00pm - 3:45pm</td>
-                      <td>Craig Peters</td>
-                      <td class="text-center"><a href="/GYM/registration" class="smoothscroll">Join Now</a></td>
-                    </tr>
-                    <tr>
-                      <td>Aerobics</td>
-                      <td>5:00pm - 5:30pm</td>
-                      <td>Paul Green</td>
-                      <td class="text-center"><a href="/GYM/registration" class="smoothscroll">Join Now</a></td>
-                    </tr>
 
-
-
-                  </tbody>
-                </table>
               </div>
               <div class="tab-pane fade" id="thursday" role="tabpanel" aria-labelledby="thursday-tab">
-                <table class="table table-bordered table-custom table-striped ">
+                {#% block body%#}
+                  <div class="container">
+                      <div class="row">
+                          <div class=" col md-12">
+                              <div class=" jumbotron p-3">
+                                  <table class="table table-light">
+                                      <thead >
+                                          <tr>
+                                              <th scope="col">Type</th>
+                                              <th scope="col">Start Time</th>
+                                              <th scope="col">End Time</th>
+                                              <th scope="col"> Trainer</th>
+                                              <th scope="col">Action</th>
+                                          </tr>
+                                      </thead>
+                                      <tbody>
+                                          {#% for now in datas %#}
+                                         
+                                          <tr>
+                                              <td>GYM</td>
+                                              <td>3:00PM</td>
+                                              <td>4:00PM</td>
+                                              <td>Pradip</td>
+                                              <th>Join Now</th>
+                                          </tr>
+              
+                                          {#% endfor %#}
+                                      </tbody>
+                                  </table>
+                              </div>    
+                          </div>
+                      </div>
+                  </div>
+                  {#% endblock%#}
 
-                  <tbody>
-                    <tr>
-                      <td>Gym</td>
-                      <td>8:00am - 10:00am</td>
-                      <td>John Doe</td>
-                      <td class="text-center"><a href="/GYM/registration" class="smoothscroll">Join Now</a></td>
-                    </tr>
-                    <tr>
-                      <td>Meditation</td>
-                      <td>10:00am - 10:30am</td>
-                      <td>James Holmes</td>
-                      <td class="text-center"><a href="/GYM/registration" class="smoothscroll">Join Now</a></td>
-                    </tr>
-                    <tr>
-                      <td>Weight Lifting</td>
-                      <td>1:00pm - 2:30pm</td>
-                      <td>Ben Smith</td>
-                      <td class="text-center"><a href="/GYM/registration" class="smoothscroll">Join Now</a></td>
-                    </tr>
-                    <tr>
-                      <td>Crossfit</td>
-                      <td>3:00pm - 3:45pm</td>
-                      <td>Craig Peters</td>
-                      <td class="text-center"><a href="/GYM/registration" class="smoothscroll">Join Now</a></td>
-                    </tr>
-                    <tr>
-                      <td>Aerobics</td>
-                      <td>5:00pm - 5:30pm</td>
-                      <td>Paul Green</td>
-                      <td class="text-center"><a href="/GYM/registration" class="smoothscroll">Join Now</a></td>
-                    </tr>
-
-
-
-                  </tbody>
-                </table>
               </div>
+
+
               <div class="tab-pane fade" id="friday" role="tabpanel" aria-labelledby="friday-tab">
-                <table class="table table-bordered table-custom table-striped ">
+                {#% block body%#}
+                <div class="container">
+                    <div class="row">
+                        <div class=" col md-12">
+                            <div class=" jumbotron p-3">
+                                <table class="table table-light">
+                                    <thead >
+                                        <tr>
+                                            <th scope="col">Type</th>
+                                            <th scope="col">Start Time</th>
+                                            <th scope="col">End Time</th>
+                                            <th scope="col"> Trainer</th>
+                                            <th scope="col">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {#% for now in datas %#}
+                                       
+                                        <tr>
+                                            <td>GYM</td>
+                                            <td>3:00PM</td>
+                                            <td>4:00PM</td>
+                                            <td>Pradip</td>
+                                            <th>Join Now</th>
+                                        </tr>
+            
+                                        {#% endfor %#}
+                                    </tbody>
+                                </table>
+                            </div>    
+                        </div>
+                    </div>
+                </div>
+                {#% endblock%#}   
 
-                  <tbody>
-                    <tr>
-                      <td>Gym</td>
-                      <td>8:00am - 10:00am</td>
-                      <td>John Doe</td>
-                      <td class="text-center"><a href="/GYM/registration" class="smoothscroll">Join Now</a></td>
-                    </tr>
-                    <tr>
-                      <td>Meditation</td>
-                      <td>10:00am - 10:30am</td>
-                      <td>James Holmes</td>
-                      <td class="text-center"><a href="/GYM/registration" class="smoothscroll">Join Now</a></td>
-                    </tr>
-                    <tr>
-                      <td>Weight Lifting</td>
-                      <td>1:00pm - 2:30pm</td>
-                      <td>Ben Smith</td>
-                      <td class="text-center"><a href="/GYM/registration" class="smoothscroll">Join Now</a></td>
-                    </tr>
-                    <tr>
-                      <td>Crossfit</td>
-                      <td>3:00pm - 3:45pm</td>
-                      <td>Craig Peters</td>
-                      <td class="text-center"><a href="/GYM/registration" class="smoothscroll">Join Now</a></td>
-                    </tr>
-                    <tr>
-                      <td>Aerobics</td>
-                      <td>5:00pm - 5:30pm</td>
-                      <td>Paul Green</td>
-                      <td class="text-center"><a href="/GYM/registration" class="smoothscroll">Join Now</a></td>
-                    </tr>
-
-
-
-                  </tbody>
-                </table>
               </div>
               <div class="tab-pane fade" id="sunday" role="tabpanel" aria-labelledby="sunday-tab">
-                <table class="table table-bordered table-custom table-striped ">
+                {#% block body%#}
+                <div class="container">
+                    <div class="row">
+                        <div class=" col md-12">
+                            <div class=" jumbotron p-3">
+                                <table class="table table-light">
+                                    <thead >
+                                        <tr>
+                                            <th scope="col">Type</th>
+                                            <th scope="col">Start Time</th>
+                                            <th scope="col">End Time</th>
+                                            <th scope="col"> Trainer</th>
+                                            <th scope="col">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {#% for now in datas %#}
+                                       
+                                        <tr>
+                                            <td>GYM</td>
+                                            <td>3:00PM</td>
+                                            <td>4:00PM</td>
+                                            <td>Pradip</td>
+                                            <th>Join Now</th>
+                                        </tr>
+            
+                                        {#% endfor %#}
+                                    </tbody>
+                                </table>
+                            </div>    
+                        </div>
+                    </div>
+                </div>
+                {#% endblock%#}
 
-                  <tbody>
-                    <tr>
-                      <td>Gym</td>
-                      <td>8:00am - 10:00am</td>
-                      <td>John Doe</td>
-                      <td class="text-center"><a href="/GYM/registration" class="smoothscroll">Join Now</a></td>
-                    </tr>
-                    <tr>
-                      <td>Meditation</td>
-                      <td>10:00am - 10:30am</td>
-                      <td>James Holmes</td>
-                      <td class="text-center"><a href="/GYM/registration" class="smoothscroll">Join Now</a></td>
-                    </tr>
-                    <tr>
-                      <td>Weight Lifting</td>
-                      <td>1:00pm - 2:30pm</td>
-                      <td>Ben Smith</td>
-                      <td class="text-center"><a href="/GYM/registration" class="smoothscroll">Join Now</a></td>
-                    </tr>
-                    <tr>
-                      <td>Crossfit</td>
-                      <td>3:00pm - 3:45pm</td>
-                      <td>Craig Peters</td>
-                      <td class="text-center"><a href="/GYM/registration" class="smoothscroll">Join Now</a></td>
-                    </tr>
-                    <tr>
-                      <td>Aerobics</td>
-                      <td>5:00pm - 5:30pm</td>
-                      <td>Paul Green</td>
-                      <td class="text-center"><a href="/GYM/registration" class="smoothscroll">Join Now</a></td>
-                    </tr>
-                  </tbody>
-                </table>
               </div>
             </div>
           </div>
         </div>
-
       </div>
     </div>
+
+
+
 
     <div class="site-section" id="trainer-section">
       <div class="container">
@@ -481,6 +475,13 @@
         
       </div>
     </div>
+
+    
+
+
+
+
+
     {% include 'App/footer.html' %}
   <footer class="footer-section">
       <div class="container">

@@ -23,6 +23,7 @@ class UserInformation(models.Model):
     pan_number=models.CharField(max_length=100)
     user_type=models.CharField(max_length=20,choices=(('Member','member'),('GYM Owner','GYM Owner')))
     def __str__(self):
+        
 
         return self.name
 

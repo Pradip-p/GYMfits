@@ -1,10 +1,10 @@
 from django.contrib import admin
 from django.contrib.admin.options import ModelAdmin
 from . models import GymInfromation
-from GYM.models import Trainers,Registration
+from GYM.models import Trainers,Registration, Schedule
 # Register your models here.
 
-
+admin.site.register(Schedule)
 
 
 

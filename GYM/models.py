@@ -1,5 +1,7 @@
 from django.db import models
 from django.core.validators import MinLengthValidator, RegexValidator
+from django.db.models import CASCADE
+
 
 
 # Create your models here.
@@ -12,6 +14,9 @@ class Trainers(models.Model):
     pic=models.ImageField(upload_to='images', null=True, blank=True)
     address=models.CharField(max_length=20)
     about=models.TextField()
+
+    def __str__(self):
+        return self.name
 
 
 
@@ -49,10 +54,13 @@ class Registration(models.Model):
     #def __str__(self):
      #   return self.name
 
-#class RatingInformation(models.Model):
-#  user=models.ForeignKey(to=UserInformation, on_delete=CASCADE)
-#Gname=models.ForeignKey(on_delete=CASCADE,to=GymInfromation)
-##comments=models.TextField()
+class Schedule(models.Model):
+    type=models.CharField(max_length=20)
+    shift=models.CharField( max_length=50,default='Moring',choices=(('morning','Moring'),('afternoon','Afternoon'),('evening','Evening')))
+    time=models.CharField(max_length=20)
+    trainer=models.ForeignKey(on_delete=CASCADE,to=Trainers)
+    def __str__(self):
+        return self.type
 
 
     
