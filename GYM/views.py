@@ -6,6 +6,9 @@ from GYM.forms import RegistrationForm
 
 
 # Create your views here.
+from GYM.models import Comment
+from GYM.forms import CommentForm
+from django.shortcuts import render, get_object_or_404
 def index(request,id):
     objects=GymInfromation.objects.all()
     for i in objects:
