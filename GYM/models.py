@@ -1,7 +1,6 @@
 from django.db import models
 from django.core.validators import MinLengthValidator, RegexValidator
 from django.db.models import CASCADE
-from App.models import UserInformation
 
 
 
@@ -35,9 +34,14 @@ class Registration(models.Model):
     
     def __str__(self):
         return self.first_name
+class Comment(models.Model):
+    name=models.CharField(max_length=20)
+    email=models.EmailField()
+    message=models.TextField()
 
 
-
+    def __str__(self):
+        return self.name
 
 
 #class GymInfromation(models.Model):
@@ -62,18 +66,3 @@ class Schedule(models.Model):
     trainer=models.ForeignKey(on_delete=CASCADE,to=Trainers)
     def __str__(self):
         return self.type
-
-
-class Comment(models.Model):
-    post = models.ForeignKey(UserInformation,on_delete=models.CASCADE,related_name='comments')
-    name = models.CharField(max_length=80)
-    email = models.EmailField()
-    body = models.TextField()
-    created_on = models.DateTimeField(auto_now_add=True)
-    active = models.BooleanField(default=False)
-
-    class Meta:
-        ordering = ['created_on']
-
-    def __str__(self):
-        return 'Comment {} by {}'.format(self.body, self.name)

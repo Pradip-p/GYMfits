@@ -1,21 +1,35 @@
 from django.shortcuts import render, HttpResponse, redirect
-from GYM.models import Trainers,Schedule
+from GYM.models import Trainers,Schedule, Comment
 from App.models import GymInfromation
 from GYM.forms import RegistrationForm
 
 
 
 # Create your views here.
-from GYM.models import Comment
-from GYM.forms import CommentForm
-from django.shortcuts import render, get_object_or_404
 def index(request,id):
-    objects=GymInfromation.objects.all()
-    for i in objects:
-        if i.id==id:
-            data=Schedule.objects.all()
-            return  render(request, 'GYM/index.html',{'info':i.name,'datas':data})
+    if request.method=='GET':
+        objects=GymInfromation.objects.all()
+        for i in objects:
+            if i.id==id:
+                data=Schedule.objects.all()
+                return  render(request, 'GYM/index.html',{'info':i.name,'datas':data})
+    elif request.method=='POST':
+        name=request.POST.get('name')
+        print(name)
+        email=request.POST.get('email')
+        message=request.POST.get('message')
+        user=Comment()
+        user.name=name
+        user.email=email
+        user.message=message
+        user.save()
+        print("thank you for comment")
+    return redirect('/')
 
+		
+		
+
+	
 
 def registration(request):
     if request.method == 'POST':

@@ -28,9 +28,7 @@ from django.contrib.auth.models import User
 
 # Create your views here.
 def index(request):
-
     information=GymInfromation.objects.all()
-
     return render(request,'App/index.html',{'informations':information})
 def login(request):
     #return render(request, 'GYM/login.html')
@@ -45,8 +43,8 @@ def login(request):
                 dj_login(request,user)
                 print(username)
                 print(password)
-                return redirect('/')
-                #return render('/',{'username':username})
+                #return redirect('/')
+                return render(request,'App/index.html')
             else:
                 return HttpResponse("Your account was inactive.")
         else:
