@@ -12,6 +12,13 @@ path('insert/',views.insert,name='insert'),
 path('schedule/',views.schedule,name='schedule'),
 path('update/<int:id>',views.update,name='update'),
 path('delete/<int:id>',views.delete,name='delete'),
+path('trainer/',views.trainer,name='trainer'),
+path('Trainer_insert/',views.Trainer_insert,name='Trainer_insert'),
+path('trainer_delete/<int:id>',views.trainer_delete,name='trainer_delete'),
+path('trainer_update/<int:id>',views.trainer_update,name='trainer_update'),
+
+
+
 path('registration/',views.registration, name='registration'),
 
 

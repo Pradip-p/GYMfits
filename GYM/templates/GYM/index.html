@@ -304,7 +304,6 @@
                                           <td>{{now.trainer}}</td>
                                           <th>Join Now</th>
                                       </tr>
-          
                                       {% endfor %}
                                   </tbody>
                                 </table>
@@ -477,28 +476,29 @@
 
     <div class="site-section" id="trainer-section">
       <div class="container">
-        <div class="row">
-          <div class="col-lg-6 mb-5">
-            <h2 class="section-title">Trainers</h2>
-            <p>A personal trainer is an individual certified to have a varying degree of knowledge of general fitness involved in exercise prescription and instruction. They motivate clients by setting goals and providing feedback and accountability to clients.</p>
-          </div>
+        <div class="col-lg-6 mb-5">
+          <h2 class="section-title">Trainers</h2>
         </div>
-        
-
-        <div class="row large-gutters">
-          <div class="col-md-6 person col-lg-4 mb-4 mb-lg-0">
-            <img src="{{message.pic.url}}" alt="Image" >
-           
-
-            <h3></h3>
+        <div class="row">
+          {% for i in obj %}
+          <div class="col-md-3 text-center mb-4">
+            
+            <div class="border p-4 text-with-icon">
+              <span class="flaticon-weightlifting icon display-4 mb-4 d-block text-primary"></span>
+              <!--  <img src="{{info.images}}" alt="image file"> -->
+            <img src="{{i.pic.url}}" height="200px" alt="Image" >
+            <h5>Name:{{i.name}}</h5>
+            <h6>Phone: {{i.phone_number}}</h6>
+            <h6>{{i.about}}</h6>
             <p class="mb-4 opacity-7"></p>
             <p></p>
+
+            </div>
           </div>
-        </div>
-        
+          {% endfor %}  
       </div>
     </div>
-
+  </div>
 
     <div id="respond">
       <h3>Leave a Comment</h3>

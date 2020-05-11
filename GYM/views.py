@@ -9,6 +9,8 @@ from GYM.forms import RegistrationForm
 def gymadmin(request):
     
     return render(request, 'gymadmin/index.html')
+
+# schedule starting
 def schedule(request):
     data=Schedule.objects.all()
     return render(request,'gymadmin/schedule.html',{'datas':data})
@@ -41,16 +43,64 @@ def delete(request,id):
     Schedule.objects.filter(id=id).delete()
     print('data is deleted')
     return redirect('schedule')
+#schedule End
 
+
+#Trainer Starting
+def trainer(request):
+    data=Trainers.objects.all()
+    return render(request,'gymadmin/trainer.html',{'datas':data })
+
+def Trainer_insert(request):
+    if request.method=='POST':
+        name = request.POST.get('name')
+        phone_number = request.POST.get('phone_number')
+        age = request.POST.get('age')
+        trainer_type = request.POST.get('trainer_type')
+        pic = request.POST.get('pic')
+        address = request.POST.get('address')
+        about = request.POST.get('about')
+        user=Trainers()
+        user.name=name
+        user.phone_number=phone_number
+        user.age=age
+        user.trainer_type=trainer_type
+        user.pic=pic
+        user.address=address
+        user.about=about
+        user.save()
+        print('data is insert')
+        return redirect('trainer')
+
+def trainer_update(request,id):
+     if request.method=='POST':
+        data=Trainers.objects.get(pk=id)
+        data.name = request.POST.get('name')
+        data.phone_number = request.POST.get('phone_number')
+        data.age = request.POST.get('age')
+        data.trainer_type =request.POST.get('trainer_type')
+        data.pic = request.POST.get('pic')
+        data.address = request.POST.get('address')
+        data.about = request.POST.get('about')
+        data.save()
+        print('data is updated')
+        return redirect('trainer')
+
+def trainer_delete(request,id):
+    Trainers.objects.filter(id=id).delete()
+    print('data is deleted')
+    return redirect('trainer')
+#Trainer End
+
+#Index file
 def index(request,id):
     if request.method=='GET':
         print(id)
         gym=GymInfromation.objects.get(pk=id)
-        print(gym)
-        print(gym.id)
         #Schedule.objects.all().prefetch_related().filter(gym__pk=id)
         data=Schedule.objects.all()
-        return  render(request, 'GYM/index.html',{'info':gym.name,'datas':data})
+        obj=Trainers.objects.all()
+        return  render(request, 'GYM/index.html',{'info':gym.name,'datas':data,'obj':obj})
 
     elif request.method=='POST':
         name=request.POST.get('name')
