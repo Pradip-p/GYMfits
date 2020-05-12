@@ -2,12 +2,12 @@ from django.shortcuts import render, HttpResponse, redirect
 from GYM.models import Trainers,Schedule, Comment
 from App.models import GymInfromation
 from GYM.forms import RegistrationForm
+from django.contrib.auth import authenticate, login as dj_login
 
 
 
 # Create your views here.
-def gymadmin(request):
-    
+def gymadmin(request):    
     return render(request, 'gymadmin/index.html')
 
 # schedule starting
@@ -91,7 +91,28 @@ def trainer_delete(request,id):
     print('data is deleted')
     return redirect('trainer')
 #Trainer End
-
+def admin_login(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')       
+        password = request.POST.get('password') 
+        user =authenticate(username=username, password=password)
+        if user:
+            if user.is_active:
+                dj_login(request,user)
+                print(username)
+                print(password)
+                return redirect('/GYM/gymadmin')
+                #return render(request,'App/index.html')
+            else:
+                return HttpResponse("Your account was inactive.")
+        else:
+             
+            print("Someone tried to login and failed.")
+            print("They used username: {} and password: {}".format(username,password))
+            return HttpResponse("Invalid login details given")
+    else:      
+        return render(request, 'gymadmin/login.html') 
+    #return render(request,'gymadmin/login.html')
 #Index file
 def index(request,id):
     if request.method=='GET':
@@ -113,11 +134,6 @@ def index(request,id):
         user.save()
         print("thank you for comment")
     return redirect('/')
-
-		
-		
-
-	
 
 def registration(request):
     if request.method == 'POST':

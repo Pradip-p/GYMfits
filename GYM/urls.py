@@ -5,8 +5,8 @@ from django.views.generic.base import RedirectView
 
 urlpatterns = [    
 path('GYM/',RedirectView.as_view(url='index/')),
-#path('GYM/',views.index, name='index'),
 path('index/<int:id>/', views.index,name='index'), 
+path('admin_login/',views.admin_login,name='admin_login'),
 path('gymadmin/',views.gymadmin,name='gymadmin'),
 path('insert/',views.insert,name='insert'),
 path('schedule/',views.schedule,name='schedule'),

@@ -1,0 +1,48 @@
+{% extends 'gymadmin/base.html'%}
+{% block content %} 
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6">
+ 
+            <h4>Login</h4><br><br>
+            
+ 
+            {% if messages %}
+                {% for message in messages %}
+                    <p class="alert alert-info">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+            
+                <form method="POST" action="/GYM/admin_login/">
+ 
+                    {% csrf_token %}
+ 
+                    <table class="table">
+                        <tr>
+                            <th><label for="id_username">Username:</label></th>
+                            <td><input type="text" name="username" id="id_username" required /></td>
+                        </tr>
+                        <tr>
+                            <th><label for="id_password">Password:</label></th>
+                            <td><input type="password" name="password" id="id_password" required /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="hidden" name="next" value=""></td>
+                            <td><button type="submit" class="btn btn-primary">Submit</button></td>
+                        </tr>
+                    </table>
+ 
+                </form>            
+        </div>
+ 
+        <div class="col-lg-6 col-md-6 col-sm-6">
+            <h4>Related Links</h4>
+            <p>
+                <a href="/password-reset/">Forgot Password?</a> <br>
+                <a href="/register/">Create new account.</a> <br>
+                <a href="/contact/">Feedback</a>
+            </p>
+        </div>
+ 
+    </div>
+ 
+{% endblock %}

@@ -76,7 +76,6 @@
             </div>
           </div>
         </div>
-      </div>
     </div>
   
 
@@ -84,7 +83,7 @@
     {#% include 'App/navbar.html' %#}
     <!-- <div style="height: 113px;"></div> -->
     <div class="slide-one-item home-slider owl-carousel">
-      <div class="site-blocks-cover inner-page" style="background-image: url(static/images/hero_b1_1.jpg);"
+      <div class="site-blocks-cover inner-page" style="background-image: url(/static/images/hero_b1_1.jpg);"
         data-aos="fade" data-stellar-background-ratio="0.5">
         <!-- <div class="container"> -->
         <div class="row align-items-center justify-content-center">
@@ -96,7 +95,7 @@
         <!-- </div> -->
       </div>
 
-      <div class="site-blocks-cover inner-page" style="background-image: url(static/images/hero_bg_2.jpg);"
+      <div class="site-blocks-cover inner-page" style="background-image: url(/static/images/hero_bg_2.jpg);"
         data-aos="fade" data-stellar-background-ratio="0.5">
         <!-- <div class="container"> -->
         <div class="row align-items-center justify-content-center">
@@ -109,95 +108,32 @@
       </div>
     </div>
    
+
     <div class="site-section">
       <div class="container">
         <div class="row">
-          
           <div class="col-md-12">
             <h2 class="site-section-heading text-center">Popular GYM's</h2>
           </div>
         </div>
         
         <div class="row">
-          {#% for i in informations %#}
-          <div class="col-md-12 block-13 nav-direction-white">
+          <div class="col-md-12 block-13 nav-direction-white"></div>
             <div class="nonloop-block-13 owl-carousel">
-              
-        <div class="row">
-          {% for info in informations%}
-          <div class="col-md-12 text-center mb-4">
-            <div class="media-image">
-            <img src="{% static 'images/img_1.jpg'%}" alt="Image" class="img-fluid">  
-            <div class="border p-4 text-with-icon">
-              <h2 class="h5">{{info.name}}</h2>
-              <p><a href="/GYM/index">More Details</a></p>
+                {% for info in informations%}
+                  <div class="col-md-12 text-center mb-4">
+                    <div class="media-image">
+                      <img src="{{info.pic.url}}" alt="Image" height="150px" class="img-fluid">  
+                      <div class="border p-4 text-with-icon">
+                          <h2 class="h5">{{info.name}}</h2>
+                          <p><a href="/GYM/index/{{info.id}}">More Details</a></p>
+                      </div>
+                    </div>
+                </div>
+                {% endfor %}
             </div>
-            </div>
-          </div>
-          {% endfor %}
         </div>
-
-
-
-
-               <!-- 
-                {% if informations %}
-                <div class="media-image-body">
-                  <h2>{{informations.name}}</h2>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, voluptate.</p>
-                  <p><a href="#" class="btn btn-primary text-white px-4"><span class="caption">Learn More</span></a></p>
-                </div>
-                {% endif %}
-              </div>
-              -->
-                <!-- 
-              <div class="media-image">
-                <img src="{% static 'images/img_2.jpg'%}" alt="Image" class="img-fluid">
-                <div class="media-image-body">
-                  <h2>{{i.name}}</h2>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, voluptate.</p>
-                  <p><a href="#" class="btn btn-primary text-white px-4"><span class="caption">Learn More</span></a></p>
-                </div>
-              </div>
-               
-              <div class="media-image">
-                <img src="{% static 'images/img_3.jpg'%}" alt="Image" class="img-fluid">
-                <div class="media-image-body">
-                  <h2>Push Up</h2>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, voluptate.</p>
-                  <p><a href="#" class="btn btn-primary text-white px-4"><span class="caption">Learn More</span></a></p>
-                </div>
-              </div>
-              <div class="media-image">
-                <img src="{% static 'images/img_4.jpg'%}" alt="Image" class="img-fluid">
-                <div class="media-image-body">
-                  <h2>Weight Lifting</h2>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, voluptate.</p>
-                  <p><a href="#" class="btn btn-primary text-white px-4"><span class="caption">Learn More</span></a></p>
-                </div>
-              </div>
-              <div class="media-image">
-                <img src="{% static 'images/img_5.jpg'%}" alt="Image" class="img-fluid">
-                <div class="media-image-body">
-                  <h2>Body Combat</h2>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, voluptate.</p>
-                  <p><a href="#" class="btn btn-primary text-white px-4"><span class="caption">Learn More</span></a></p>
-                </div>
-              </div>
-              <div class="media-image">
-                <img src="{% static 'images/img_6.jpg'%}" alt="Image" class="img-fluid">
-                <div class="media-image-body">
-                  <h2>Body Combat</h2>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, voluptate.</p>
-                  <p><a href="#" class="btn btn-primary text-white px-4"><span class="caption">Learn More</span></a></p>
-                </div>
-              </div>
-              -->
-            </div>
-          </div>
-          {#% endfor %#}
         </div>
-       
       </div>
     </div>
    
@@ -222,7 +158,7 @@
               
               <label>Location:{{info.location}}</label><br>
               <label>Prizes:{{info.pricing}}</label>
-              <p>{{info.id }}<a href="/GYM/index/{{info.id}}">More Details</a></p>
+              <p><a href="/GYM/index/{{info.id}}">More Details</a></p>
             </div>
           </div>
           {% endfor %}
@@ -230,16 +166,9 @@
       </div>
 
     </div>
-    
-    </div>
-
-
-
-    {% include 'App/footer.html' %}
-
   </div>
 
-
+  {% include 'App/footer.html' %}
   <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
   <script src="{% static 'js/jquery-migrate-3.0.1.min.js' %}"></script>
   <script src="{% static 'js/jquery-ui.js' %}"></script>

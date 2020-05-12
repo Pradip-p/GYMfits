@@ -43,8 +43,8 @@ def login(request):
                 dj_login(request,user)
                 print(username)
                 print(password)
-                #return redirect('/')
-                return render(request,'App/index.html')
+                return redirect('index')
+                #return render(request,'App/index.html')
             else:
                 return HttpResponse("Your account was inactive.")
         else:
