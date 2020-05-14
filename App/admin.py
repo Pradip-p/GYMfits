@@ -8,13 +8,6 @@ admin.site.register(Schedule)
 
 
 
-class RegistrationAdmin(ModelAdmin):
-    list_display=['first_name','last_name','address','email','gender','phone_number','status','age','time']
-    search_fields=['first_name','phone_number','age','gender','status']
-    list_filter=['status','age','time']
-admin.site.register(Registration,RegistrationAdmin)
-
-
 
 class TrainerAdmin(ModelAdmin):
     list_display=['name','phone_number','age','trainer_type','address','about']

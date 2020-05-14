@@ -64,7 +64,7 @@
                                     <h4 class="modal-title">Updated Information</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="/GYM/trainer_update/{{now.id}}" method="POST">
+                                    <form action="/GYM/trainer_update/{{now.id}}" enctype="multipart/form-data" method="POST">
                                         {% csrf_token %}
 
                                         <div class="form-group">
@@ -114,6 +114,14 @@
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                 </div>
+                                {% if uploaded_file_url %}
+                                <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
+                                {% endif %}
+                            
+                                <p><a href="#">Return to home</a></p>
+                                
+
+
                             </div>
                         </div>
                     </div>
@@ -136,7 +144,7 @@
                     <div class="modal-body">
 
 
-                        <form action="/GYM/Trainer_insert/" method="POST">
+                        <form action="/GYM/Trainer_insert/" enctype="multipart/form-data" method="POST">
                             {% csrf_token %}
 
                             <div class="form-group">

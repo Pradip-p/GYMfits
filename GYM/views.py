@@ -1,8 +1,11 @@
 from django.shortcuts import render, HttpResponse, redirect
 from GYM.models import Trainers,Schedule, Comment
-from App.models import GymInfromation
+from App.models import GymInfromation,UserInformation
 from GYM.forms import RegistrationForm
 from django.contrib.auth import authenticate, login as dj_login
+
+from django.conf import settings
+from django.core.files.storage import FileSystemStorage
 
 
 
@@ -52,12 +55,15 @@ def trainer(request):
     return render(request,'gymadmin/trainer.html',{'datas':data })
 
 def Trainer_insert(request):
-    if request.method=='POST':
+    if request.method=='POST' and request.FILES['pic']:
         name = request.POST.get('name')
         phone_number = request.POST.get('phone_number')
         age = request.POST.get('age')
         trainer_type = request.POST.get('trainer_type')
-        pic = request.POST.get('pic')
+        pic = request.FILES.get('pic')
+        fs = FileSystemStorage()
+        filename = fs.save(pic.name, pic)
+        uploaded_file_url = fs.url(filename)
         address = request.POST.get('address')
         about = request.POST.get('about')
         user=Trainers()
@@ -73,13 +79,16 @@ def Trainer_insert(request):
         return redirect('trainer')
 
 def trainer_update(request,id):
-     if request.method=='POST':
+     if request.method=='POST'and request.FILES['pic']:
         data=Trainers.objects.get(pk=id)
         data.name = request.POST.get('name')
         data.phone_number = request.POST.get('phone_number')
         data.age = request.POST.get('age')
         data.trainer_type =request.POST.get('trainer_type')
-        data.pic = request.POST.get('pic')
+        a=data.pic = request.FILES.get('pic')
+        fs = FileSystemStorage()
+        filename = fs.save(a.name, a)
+        uploaded_file_url = fs.url(filename)
         data.address = request.POST.get('address')
         data.about = request.POST.get('about')
         data.save()
@@ -97,7 +106,7 @@ def admin_login(request):
         password = request.POST.get('password') 
         user =authenticate(username=username, password=password)
         if user:
-            if user.is_active:
+            if user.is_staff:
                 dj_login(request,user)
                 print(username)
                 print(password)
@@ -116,11 +125,11 @@ def admin_login(request):
 #Index file
 def index(request,id):
     if request.method=='GET':
-        print(id)
         gym=GymInfromation.objects.get(pk=id)
         #Schedule.objects.all().prefetch_related().filter(gym__pk=id)
         data=Schedule.objects.all()
         obj=Trainers.objects.all()
+       
         return  render(request, 'GYM/index.html',{'info':gym.name,'datas':data,'obj':obj})
 
     elif request.method=='POST':

@@ -4,6 +4,7 @@ from GYM import views
 from django.views.generic.base import RedirectView
 
 urlpatterns = [    
+    
 path('GYM/',RedirectView.as_view(url='index/')),
 path('index/<int:id>/', views.index,name='index'), 
 path('admin_login/',views.admin_login,name='admin_login'),

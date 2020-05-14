@@ -74,8 +74,6 @@
         <div class="d-flex align-items-center">
         
           <div class="site-logo"><a href="/GYM/index">{{info}}</a></div>
-          
-
           <div class="ml-auto">
             <nav class="site-navigation position-relative text-right" role="navigation">
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
@@ -83,6 +81,11 @@
                 <li><a href="#schedule-section" class="nav-link">Schedule</a></li>
                 <li><a href="#trainer-section" class="nav-link">Trainer</a></li>
                 <li><a href="/GYM/admin_login/" class="nav-link">Admin</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="/logout" class="nav-link">Logout</a></li>
+                <li><a href="" class="nav-link">Hello {{user.username}}</a></li>
+
+                {% endif %}
                 <!-- 
                 <li><a href="/GYM/login" class="nav-link">Sign In</a></li>
                 <li><a href="/GYM/signup" class="nav-link">Sign Up</a></li>
@@ -263,7 +266,36 @@
                                               <td>{{now.time}}</td>
                                               <td>{{now.trainer}}</td>
                                               <th>
-                                                <a href="/signup" class="nav-link">Join Now</a>
+                                                {% if user.is_authenticated %}
+                                                <a class="btn btn-primary">Join Now</a>
+                                                {% else %}
+                                                <!-- Button trigger modal -->
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                                  Are you intrested to Join?
+                                                </button>
+
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                  <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                      <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">For registration of GYM</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                          <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                      </div>
+                                                      <div class="modal-body">
+                                                        Sign In if you have an account 
+                                                        or Sign Up
+                                                      </div>
+                                                      <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"  ><a href="/login"> Sign In</a></button>
+                                                        <button type="button" class="btn btn-secondary" > <a href="/signup">Sign Up</a></button>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                       {% endif %}                                         
                                               </th>
                                           </tr>
               
@@ -470,8 +502,6 @@
         </div>
       </div>
     </div>
-
-
 
 
     <div class="site-section" id="trainer-section">

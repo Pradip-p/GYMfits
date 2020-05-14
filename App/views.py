@@ -31,20 +31,17 @@ def index(request):
     information=GymInfromation.objects.all()
     return render(request,'App/index.html',{'informations':information})
 def login(request):
-    #return render(request, 'GYM/login.html')
-    #if request.user.is_authenticated():
-        #return redirect('/')
     if request.method == 'POST':
         username = request.POST.get('username')       
         password = request.POST.get('password') 
         user =authenticate(username=username, password=password)
         if user:
+            print(user.username)
             if user.is_active:
                 dj_login(request,user)
-                print(username)
-                print(password)
+
                 return redirect('index')
-                #return render(request,'App/index.html')
+                
             else:
                 return HttpResponse("Your account was inactive.")
         else:
