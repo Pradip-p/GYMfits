@@ -56,6 +56,7 @@
                           <h4 class="modal-title">Updated Information</h4>
                         </div>
                         <div class="modal-body">
+                          
                           <form action="/GYM/update/{{now.id}}" method="POST">
                             {% csrf_token %}
 
@@ -74,8 +75,16 @@
                             </div>
                             <div class="form-group">
                               <label>Trainer:</label>
-                              <input type="text" class="form-control" name="trainer" required="1" value="{{now.trainer}}">
+                              <select name="trainer">
+                                <option selected="selected" >Objects on below:</option>
+                                {% for i in objs %}
+                                    <option value=" " >{{i.name}}</option>
+                                {% endfor %}
+                                </select>
+                              
+              
                             </div>
+
                             <div class="form-group">
                               <button class="btn btn-primary" type="submit">Updated</button>
                             </div>
@@ -108,8 +117,19 @@
 
 
                   <div class="modal-body">
+                    <form method="POST" action="/GYM/insert/">
+                      {% csrf_token %}
+                      <table class="table">
+                
+                        {{ form.as_table }}
+                
+                        <tr>
+                            <td><button type="submit" class="btn btn-primary">Submit</button></td>
+                        </tr>
+                    </table>
+                    </form>
 
-
+<!-- 
                     <form action="/GYM/insert/" method="POST">
                       {% csrf_token %}
 
@@ -127,16 +147,24 @@
                         <label>Time:</label>
                         <input type="text" class="form-control" name="time" required="1">
                       </div>
+                      
                       <div class="form-group">
                         <label>Trainer:</label>
-                        <input type="text" class="form-control" name="trainer" required="1">
+                        <select name="trainer">
+                          <option selected="selected" >Objects on below:</option>
+                          {% for now in objs %}
+                              <option value="now" >{{now.name}}</option>
+                          {% endfor %}
+                          </select>
                       </div>
+                      
                       <div class="form-group">
                         <button class="btn btn-primary" type="submit">Insert Data</button>
                       </div>
 
 
                     </form>
+                    -->
 
 
                   </div>
@@ -152,4 +180,6 @@
         </div>
       </div>
     </div>
+
+ 
     {% endblock %}

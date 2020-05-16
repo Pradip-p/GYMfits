@@ -73,7 +73,7 @@
       <div class="container-fluid">
         <div class="d-flex align-items-center">
         
-          <div class="site-logo"><a href="/GYM/index">{{info}}</a></div>
+          <div class="site-logo"><a href="/GYM/index">{{info.name}}</a></div>
           <div class="ml-auto">
             <nav class="site-navigation position-relative text-right" role="navigation">
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
@@ -81,6 +81,7 @@
                 <li><a href="#schedule-section" class="nav-link">Schedule</a></li>
                 <li><a href="#trainer-section" class="nav-link">Trainer</a></li>
                 <li><a href="/GYM/admin_login/" class="nav-link">Admin</a></li>
+
                 {% if user.is_authenticated %}
                 <li><a href="/logout" class="nav-link">Logout</a></li>
                 <li><a href="" class="nav-link">Hello {{user.username}}</a></li>
@@ -516,6 +517,7 @@
             <div class="border p-4 text-with-icon">
               <span class="flaticon-weightlifting icon display-4 mb-4 d-block text-primary"></span>
               <!--  <img src="{{info.images}}" alt="image file"> -->
+              
             <img src="{{i.pic.url}}" height="200px" alt="Image" >
             <h5>Name:{{i.name}}</h5>
             <h6>Phone: {{i.phone_number}}</h6>

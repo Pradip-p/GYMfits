@@ -19,11 +19,6 @@ class Trainers(models.Model):
     def __str__(self):
         return self.name
 
-
-
-class Registration(models.Model):
-    user=models.ForeignKey(to=UserInformation, on_delete=CASCADE,null=True, blank=True)
-
 class Comment(models.Model):
     name=models.CharField(max_length=20)
     email=models.EmailField()
@@ -37,8 +32,15 @@ class Schedule(models.Model):
     type=models.CharField(max_length=20)
     shift=models.CharField( max_length=50,default='Moring',choices=(('morning','Moring'),('afternoon','Afternoon'),('evening','Evening')))
     time=models.CharField(max_length=20)
-    trainer=models.CharField(max_length=20)
-    #trainer=models.ForeignKey(on_delete=CASCADE,to=Trainers)
+    #trainer=models.CharField(max_length=20)
+    trainer=models.ForeignKey(on_delete=CASCADE,to=Trainers, null=True, blank=True)
     gym = models.ForeignKey(to=GymInfromation,on_delete=CASCADE, null=True, blank=True)
     def __str__(self):
-        return self.type
+        return self.type 
+
+class Registration(models.Model):
+    user=models.OneToOneField(to=UserInformation, on_delete=CASCADE,null=True, blank=True)
+    schedule=models.OneToOneField(to=Schedule, on_delete=CASCADE,null=True, blank=True)
+
+
+

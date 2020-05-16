@@ -1,7 +1,8 @@
 from django.shortcuts import render, HttpResponse, redirect
 from GYM.models import Trainers,Schedule, Comment
 from App.models import GymInfromation,UserInformation
-from GYM.forms import RegistrationForm
+from django.contrib.auth.models import User
+from GYM.forms import RegistrationForm, ScheduleForm
 from django.contrib.auth import authenticate, login as dj_login
 
 from django.conf import settings
@@ -10,31 +11,55 @@ from django.core.files.storage import FileSystemStorage
 
 
 # Create your views here.
-def gymadmin(request):    
+def gymadmin(request ): 
+    obj=GymInfromation.objects.all()  
+    contex={
+        'obj':obj
+    }
+    
     return render(request, 'gymadmin/index.html')
 
 # schedule starting
 def schedule(request):
     data=Schedule.objects.all()
-    return render(request,'gymadmin/schedule.html',{'datas':data})
+    objs=Trainers.objects.all()
+    schedule_form=ScheduleForm()
+    contex={
+        'datas':data,
+        'objs':objs,
+        'form':schedule_form
+    }
+    return render(request,'gymadmin/schedule.html',contex)
 def insert(request):
-    if request.method=='POST':
-        type = request.POST.get('type')
-        shift = request.POST.get('shift')
-        time = request.POST.get('time')
-        trainer = request.POST.get('trainer')
-        user=Schedule()
-        user.type=type
-        user.shift=shift
-        user.time=time
-        user.trainer=trainer
-        user.save()
-        print('data is insert')
-        return redirect('schedule')
+    if request.method == 'POST':
+        form= ScheduleForm(request.POST)
+        if form.is_valid():
+            form.save()
+            print("data is subit")
+    return redirect('schedule')
+
+   # if request.method=='POST':
+       # t=Trainers.objects.get(pk=1)
+        #user=Schedule(type="GYM",shift="Morning",time="4:6PM", trainer=t)
+        #user.save()
+        #print("data is sumited")
+        #type = request.POST.get('type')
+        #shift = request.POST.get('shift')
+        #time = request.POST.get('time')
+        #t=Trainers.objects.create(trainer=trainer)
+        #trainer = request.POST.get('trainer')
+        #user=Schedule()
+        #user.type=type
+        #user.shift=shift
+        #user.time=time
+        #user.trainer=trainer
+        #user.save()
+        #print('data is insert')
+        #return redirect('schedule')
+
 def update(request,id):
      if request.method=='POST':
         data=Schedule.objects.get(pk=id)
-        print(data.type)
         data.type = request.POST.get('type')
         data.shift = request.POST.get('shift')
         data.time = request.POST.get('time')
@@ -108,10 +133,12 @@ def admin_login(request):
         if user:
             if user.is_staff:
                 dj_login(request,user)
-                print(username)
-                print(password)
+                #ob=GymInfromation.objects.all().prefetch_related("User")
+                #print([list(pizza.User.filter(name=dell)) for pizza in ob])
+                #ob=GymInfromation.objects.all().prefetch_related(User).filter(user_id=1)
+                
                 return redirect('/GYM/gymadmin')
-                #return render(request,'App/index.html')
+                #return render(request,'A pp/index.html')
             else:
                 return HttpResponse("Your account was inactive.")
         else:
@@ -130,7 +157,7 @@ def index(request,id):
         data=Schedule.objects.all()
         obj=Trainers.objects.all()
        
-        return  render(request, 'GYM/index.html',{'info':gym.name,'datas':data,'obj':obj})
+        return  render(request, 'GYM/index.html',{'info':gym,'datas':data,'obj':obj})
 
     elif request.method=='POST':
         name=request.POST.get('name')
