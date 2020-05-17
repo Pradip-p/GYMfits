@@ -14,6 +14,7 @@ class Trainers(models.Model):
     trainer_type=models.CharField(max_length=20)
     pic=models.ImageField(upload_to='images', null=True, blank=True)
     address=models.CharField(max_length=20)
+    gym = models.ForeignKey(to=GymInfromation,on_delete=CASCADE, null=True, blank=True)
     about=models.TextField()
 
     def __str__(self):
@@ -37,6 +38,8 @@ class Schedule(models.Model):
     gym = models.ForeignKey(to=GymInfromation,on_delete=CASCADE, null=True, blank=True)
     def __str__(self):
         return self.type 
+
+
 
 class Registration(models.Model):
     user=models.OneToOneField(to=UserInformation, on_delete=CASCADE,null=True, blank=True)

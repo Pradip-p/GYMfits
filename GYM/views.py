@@ -1,8 +1,8 @@
 from django.shortcuts import render, HttpResponse, redirect
-from GYM.models import Trainers,Schedule, Comment
+from GYM.models import Trainers,Schedule, Comment, Registration
 from App.models import GymInfromation,UserInformation
 from django.contrib.auth.models import User
-from GYM.forms import RegistrationForm, ScheduleForm
+from GYM.forms import RegistrationForm, ScheduleForm,UserInformationForm
 from django.contrib.auth import authenticate, login as dj_login
 
 from django.conf import settings
@@ -11,22 +11,41 @@ from django.core.files.storage import FileSystemStorage
 
 
 # Create your views here.
-def gymadmin(request ): 
-    obj=GymInfromation.objects.all()  
+def gymadmin(request,id ): 
+    obj=Schedule.objects.get(pk=id)
+    #obj=GymInfromation.objects.get(pk=id)  
+    print(obj.gym.name)
+    #ob=GymInfromation.objects.all().prefetch_related(User).filter(user_id=1)
+    #ob=Schedule.objects.all().prefetch_related('GymInfromation').filter(gym_id=1)
+    #print(ob)
+    
+   # print(ob)
+   # print(ob.gym_id)
     contex={
-        'obj':obj
+        'obj':obj,
+        #'ob':ob
     }
     
-    return render(request, 'gymadmin/index.html')
+    return render(request, 'gymadmin/index.html',contex)
 
 # schedule starting
-def schedule(request):
-    data=Schedule.objects.all()
-    objs=Trainers.objects.all()
+def schedule(request, id):
+    print(id)
+    data=Schedule.objects.all().prefetch_related().filter(gym__pk=id)
+    print(data)
+    #data=Schedule.objects.all()
+    print(data)
+    for i in data:
+        type=i.type
+        shift=i.shift
+        time=i.time
+        
+
+       
+    
     schedule_form=ScheduleForm()
     contex={
         'datas':data,
-        'objs':objs,
         'form':schedule_form
     }
     return render(request,'gymadmin/schedule.html',contex)
@@ -75,9 +94,12 @@ def delete(request,id):
 
 
 #Trainer Starting
-def trainer(request):
-    data=Trainers.objects.all()
+def trainer(request, id):
+    data=Trainers.objects.all().prefetch_related().filter(gym__pk=id)
+    #data=Trainers.objects.all()
     return render(request,'gymadmin/trainer.html',{'datas':data })
+
+
 
 def Trainer_insert(request):
     if request.method=='POST' and request.FILES['pic']:
@@ -153,11 +175,19 @@ def admin_login(request):
 def index(request,id):
     if request.method=='GET':
         gym=GymInfromation.objects.get(pk=id)
-        #Schedule.objects.all().prefetch_related().filter(gym__pk=id)
-        data=Schedule.objects.all()
-        obj=Trainers.objects.all()
+        data=Schedule.objects.all().prefetch_related().filter(gym__pk=id).first()
+        obj=Schedule.objects.all().prefetch_related().filter(gym__pk=id)
+
+        #print(data.gym_id)
+        #obj=Trainers.objects.all()
+        contex={
+            'data':data,
+            'gym':gym,
+            'datas':obj
+        }
        
-        return  render(request, 'GYM/index.html',{'info':gym,'datas':data,'obj':obj})
+        return  render(request, 'GYM/index.html',contex)
+
 
     elif request.method=='POST':
         name=request.POST.get('name')
@@ -173,17 +203,28 @@ def index(request,id):
 
 def registration(request):
     if request.method == 'POST':
+        profile_form= UserInformationForm(request.POST)
         register_form = RegistrationForm(request.POST)
-        if register_form.is_valid():
+        if register_form.is_valid() and profile_form.is_valid():
+            profile=profile_form.save(commit=False)
+            profile.save()
             user=register_form.save()
             user.save() 
-            return redirect('/')
+            return redirect('/GYM/gymadmin')
             
         else:
             print('can not register')
     else:
         register_form = RegistrationForm()
-    return render(request, 'GYM/registration.html', {'register_form':register_form })
+        profile_form = UserInformationForm()
+    registration=Registration.objects.values_list("id")
+    contex={
+        'register_form':register_form,
+        'registration':registration,
+        'profile_form':profile_form
+
+    }
+    return render(request, 'gymadmin/registration.html', contex)
 
 
          
