@@ -53,6 +53,7 @@ def login(request):
         return render(request, 'GYM/login.html') 
             
 def signup(request):
+    
     if request.method == 'POST':
         profile_form= UserInformationForm(request.POST)
         user_form = UserForm(request.POST)
