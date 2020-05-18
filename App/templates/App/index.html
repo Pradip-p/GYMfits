@@ -125,6 +125,7 @@
                       <img src="{{info.pic.url}}" alt="Image" height="150px" class="img-fluid">  
                       <div class="border p-4 text-with-icon">
                           <h2 class="h5">{{info.name}}</h2>
+                          
                           <p><a href="/GYM/index/{{info.id}}">More Details</a></p>
                       </div>
                     </div>
@@ -157,7 +158,7 @@
               
               <label>Location:{{info.location}}</label><br>
               <label>Prizes:{{info.pricing}}</label>
-              <p><a href="/GYM/index/{{info.id}}">More Details</a></p>
+              <p>{{info.id}}<a href="/GYM/index/{{info.id}}">More Details</a></p>
             </div>
           </div>
           {% endfor %}

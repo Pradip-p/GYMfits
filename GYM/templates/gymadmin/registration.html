@@ -1,0 +1,39 @@
+{% extends 'gymadmin/base.html'%}
+{% block content %}
+    
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <h4>Add Registration</h4>
+                <hr>
+                {% if messages %}
+                    {% for message in messages %}
+                        <p class="alert alert-info">{{ message }}</p>
+                    {% endfor %}
+                {% endif %}
+     
+                <form method="post" action="">
+     
+                    {% csrf_token %}
+     
+                    <table class="table">
+                        {{ register_form.as_table }}
+                        {{ profile_form.as_table }}
+                       
+                        <tr>
+                            <td><button type="submit" class="btn btn-primary">Submit</button></td>
+                        </tr>
+                    </table>
+     
+                </form>
+            </div>
+     
+        </div>
+
+
+        {% for i in registration %}
+        {{i}}
+        {% endfor %}
+     
+    {% endblock %}
+
+

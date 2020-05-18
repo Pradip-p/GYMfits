@@ -4,8 +4,8 @@
 <html lang="en">
 
 <head>
-  {% if info %}
-  <title>{{info}}</title>
+  
+  <title>{{data.gym.name}}</title>
   <style>
     #respond {
       margin-top: 20px;
@@ -29,7 +29,7 @@
       line-height: 1.4em;
     }
   </style>
-{% endif %}
+
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -72,15 +72,16 @@
 
       <div class="container-fluid">
         <div class="d-flex align-items-center">
-        
-          <div class="site-logo"><a href="/GYM/index">{{info}}</a></div>
+      
+          <div class="site-logo"><a href="/GYM/index">{{gym.name}}</a></div>
+  
           <div class="ml-auto">
             <nav class="site-navigation position-relative text-right" role="navigation">
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
                 <li><a href="/" class="nav-link">Home</a></li>
                 <li><a href="#schedule-section" class="nav-link">Schedule</a></li>
                 <li><a href="#trainer-section" class="nav-link">Trainer</a></li>
-                <li><a href="/GYM/admin_login/" class="nav-link">Admin</a></li>
+                <li><a href="/GYM/gymadmin/{{data.id}}" class="nav-link">Admin</a></li>
                 {% if user.is_authenticated %}
                 <li><a href="/logout" class="nav-link">Logout</a></li>
                 <li><a href="" class="nav-link">Hello {{user.username}}</a></li>
@@ -116,9 +117,9 @@
       <div class="container">
         <div class="row align-items-center">
           <div class="col-lg-8 mx-auto text-center" data-aos="fade-up">
-            {% for info in informations %}
-            <h1>Welcome To {{info.name}}</h1>
-            {% endfor %}
+            
+            <h1>Welcome To {{gym.name}}</h1>
+            
           </div>
         </div>
       </div>
@@ -241,7 +242,7 @@
             </ul>
             <div class="tab-content" id="myTabContent">
               <div class="tab-pane fade show active" id="monday" role="tabpanel" aria-labelledby="monday-tab">
-                  {% block body%}
+                  {% block body %}
                   <div class="container">
                       <div class="row">
                           <div class=" col md-12">
@@ -257,9 +258,9 @@
                                           </tr>
                                       </thead>
                                       <tbody>
+                                       
                                           {% for now in datas %}
-                                         
-
+                                        
                                           <tr>
                                               <td>{{now.type}}</td>
                                               <td>{{now.shift}}</td>
@@ -295,22 +296,23 @@
                                                     </div>
                                                   </div>
                                                 </div>
-                                                       {% endif %}                                         
+                                                  {% endif %}                                         
                                               </th>
                                           </tr>
               
                                           {% endfor %}
+                                        
                                       </tbody>
                                   </table>
                               </div>    
                           </div>
                       </div>
                   </div>
-                  {% endblock%}
+                  {% endblock %}
               </div>
 
               <div class="tab-pane fade" id="tuesday" role="tabpanel" aria-labelledby="tuesday-tab">
-                {#% block body%#}
+                {#% block body %#}
                 <div class="container">
                     <div class="row">
                         <div class=" col md-12">
@@ -343,7 +345,7 @@
                         </div>
                     </div>
                 </div>
-                {#% endblock%#}
+                {#% endblock %#}
               </div>
 
               <div class="tab-pane fade" id="wednesday" role="tabpanel" aria-labelledby="wednesday-tab">
@@ -516,6 +518,7 @@
             <div class="border p-4 text-with-icon">
               <span class="flaticon-weightlifting icon display-4 mb-4 d-block text-primary"></span>
               <!--  <img src="{{info.images}}" alt="image file"> -->
+              
             <img src="{{i.pic.url}}" height="200px" alt="Image" >
             <h5>Name:{{i.name}}</h5>
             <h6>Phone: {{i.phone_number}}</h6>
