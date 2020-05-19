@@ -81,8 +81,12 @@
                 <li><a href="/" class="nav-link">Home</a></li>
                 <li><a href="#schedule-section" class="nav-link">Schedule</a></li>
                 <li><a href="#trainer-section" class="nav-link">Trainer</a></li>
+                {% if user.is_staff %}
                 <li><a href="/GYM/gymadmin/{{data.id}}" class="nav-link">Admin</a></li>
+                {% endif %}
+
                 {% if user.is_authenticated %}
+
                 <li><a href="/logout" class="nav-link">Logout</a></li>
                 <li><a href="" class="nav-link">Hello {{user.username}}</a></li>
 
@@ -136,7 +140,7 @@
             <div class="counter d-flex align-items-start mb-5" data-aos="fade-up" data-aos-delay="">
               <div class="icon-wrap"><span class="flaticon-muscle text-primary"></span></div>
               <div class="counter-text">
-                <strong>2,260</strong>
+                <strong>2, </strong>
                 <span>Members</span>
               </div>
             </div>
@@ -204,10 +208,6 @@
         <div class="row">
           <div class="col-lg-6 mb-5">
             <h2 class="section-title">Schedule</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem possimus distinctio ex. Natus totam
-              voluptatibus animi aspernatur ducimus quas obcaecati mollitia quibusdam temporibus culpa dolore molestias
-              blanditiis consequuntur
-              sunt nisi.</p>
           </div>
         </div>
 
