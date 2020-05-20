@@ -20,7 +20,7 @@ path('trainer_update/<int:id>',views.trainer_update,name='trainer_update'),
 
 
 
-path('registration/',views.registration, name='registration'),
+path('registration/<int:id>',views.registration, name='registration'),
 
 
 ]

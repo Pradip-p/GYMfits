@@ -1,9 +1,9 @@
 from django.contrib import admin
 from django.contrib.admin.options import ModelAdmin
-from . models import GymInfromation
+from . models import GymInfromation,UserInformation
 from GYM.models import Trainers,Registration, Schedule
 # Register your models here.
-
+admin.site.register(UserInformation)
 admin.site.register(Schedule)
 
 
@@ -15,8 +15,6 @@ class TrainerAdmin(ModelAdmin):
     search_fields=['name','trainer_type','address','age','phone_number']
 admin.site.register(Trainers,TrainerAdmin)
 admin.site.register(GymInfromation)
-
-
 
 
 #class GymInfromationAdmin(ModelAdmin):

@@ -4,6 +4,7 @@ from django.db.models import CASCADE
 from App.models import GymInfromation, UserInformation
 
 
+
 # Create your models here.
 
 class Trainers(models.Model):
@@ -44,6 +45,5 @@ class Schedule(models.Model):
 class Registration(models.Model):
     user=models.OneToOneField(to=UserInformation, on_delete=CASCADE,null=True, blank=True)
     schedule=models.OneToOneField(to=Schedule, on_delete=CASCADE,null=True, blank=True)
-
 
 
