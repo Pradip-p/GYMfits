@@ -60,6 +60,8 @@
                           <form action="/GYM/update/{{now.id}}" method="POST">
                             {% csrf_token %}
 
+                           
+
                             <div class="form-group">
                               <label>Type:</label>
                               <input type="hidden" name="type" value="type">
@@ -73,18 +75,19 @@
                               <label>Time:</label>
                               <input type="text" class="form-control" name="time" required="1" value="{{now.time}}">
                             </div>
+                            
+
                             <div class="form-group">
                               <label>Trainer:</label>
                               <select name="trainer">
-                                <option selected="selected" >Objects on below:</option>
-                                {% for i in objs %}
-                                    <option value=" " >{{i.name}}</option>
+                                <option selected="selected" >{{now.trainer}}</option>
+                                {% for i in trainers %}
+                                    <option value="{{i.pk}}" >{{i.name}}</option>
                                 {% endfor %}
                                 </select>
                               
               
                             </div>
-
                             <div class="form-group">
                               <button class="btn btn-primary" type="submit">Updated</button>
                             </div>

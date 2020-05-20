@@ -36,10 +36,10 @@ def login(request):
         password = request.POST.get('password') 
         user =authenticate(username=username, password=password)
         if user:
-            print(user.username)
+            print(user.id)
             if user.is_active:
                 dj_login(request,user)
-
+                request.session['user']=user.id
                 return redirect('index')
                 
             else:
@@ -108,6 +108,8 @@ def activate(request, uidb64, token):
 
 @login_required
 def logout(request):
+    user = request.session.get('user.id')
+    del user
     auth.logout(request)
     return redirect('/')
     #return render(request,'/')

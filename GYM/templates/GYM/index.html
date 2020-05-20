@@ -81,9 +81,9 @@
                 <li><a href="/" class="nav-link">Home</a></li>
                 <li><a href="#schedule-section" class="nav-link">Schedule</a></li>
                 <li><a href="#trainer-section" class="nav-link">Trainer</a></li>
-                {% if user.is_staff %}
+                
                 <li><a href="/GYM/gymadmin/{{data.id}}" class="nav-link">Admin</a></li>
-                {% endif %}
+              
 
                 {% if user.is_authenticated %}
 
@@ -268,7 +268,7 @@
                                               <td>{{now.trainer}}</td>
                                               <th>
                                                 {% if user.is_authenticated %}
-                                                <a href="/GYM/registration/{{gym.id}}">Join Now</a>
+                                                <a href="/GYM/enroll/{{now.id}}">Join Now</a>
                                                 {% else %}
                                                 <!-- Button trigger modal -->
                                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
@@ -336,7 +336,7 @@
                                           <td>{{now.shift}}</td>
                                           <td>{{now.time}}</td>
                                           <td>{{now.trainer}}</td>
-                                          <th>Join Now</th>
+                                          <th><a href="/Gym/{{now.gym.pk}}/schedule/{{now.pk}}"Join Now</th>
                                       </tr>
                                       {% endfor %}
                                   </tbody>

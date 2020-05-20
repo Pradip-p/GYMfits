@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect
-from GYM.models import Trainers,Schedule, Comment, Registration
+from GYM.models import Trainers,Schedule, Comment, UserSchedule
 from App.models import GymInfromation,UserInformation
 from django.contrib.auth.models import User
 from GYM.forms import ScheduleForm,UserInformationForm,TrainersForm
@@ -22,20 +22,23 @@ def gymadmin(request,id):
 # schedule starting
 def schedule(request, id):
     data=Schedule.objects.all().prefetch_related().filter(gym__pk=id)
+    trainers = Trainers.objects.all()
     schedule_form=ScheduleForm()
     contex={
         'datas':data,
-        'form':schedule_form
+        'form':schedule_form,
+        'trainers':trainers
     }
     return render(request,'gymadmin/schedule.html',contex)
 def insert(request):
     if request.method=='POST':
         schedule_form=ScheduleForm(request.POST)
+    
         if schedule_form.is_valid:
             schedule_form.save()
             print("data is sumited") 
         print('data is insert')
-        return redirect('schedule')
+        #return redirect('/GYM/schedule/'+str(id)')
 
 def update(request,id):
      if request.method=='POST':
@@ -43,14 +46,16 @@ def update(request,id):
         data.type = request.POST.get('type')
         data.shift = request.POST.get('shift')
         data.time = request.POST.get('time')
-        data.trainer =request.POST.get('trainer')
+        trainer_id =request.POST.get('trainer')
+        trainer = Trainers.objects.filter(pk=trainer_id).first()
+        data.trainer = trainer
         data.save()
         print('data is updated')
-        return redirect('schedule')
+        return redirect('/GYM/schedule/'+str(id))
 def delete(request,id):
     Schedule.objects.filter(id=id).delete()
     print('data is deleted')
-    return redirect('schedule')
+    return redirect('/GYM/schedule/'+str(id))
 #schedule End
 
 
@@ -153,7 +158,7 @@ def index(request,id):
 
 def registration(request,id):
     if request.method=='GET':
-        data=Registration.objects.all().prefetch_related().get(user_id=id)
+        data=UserSchedule.objects.all().prefetch_related().get(user_id=id)
         contex={
         'datas':data
         } 
@@ -161,5 +166,17 @@ def registration(request,id):
         print("user is sumbmitted")
     return render(request, 'gymadmin/registration.html',contex)
 
+def enroll(request, schedule_id):
+    user_id = request.session.get('user')
+    print(user_id)
+    schedule_id = schedule_id
+    print(schedule_id)
+    user = User.objects.filter(pk=user_id).first()
+    schedule = Schedule.objects.filter(pk=schedule_id).first()
+    us = UserSchedule()
+    us.user = user
+    us.schedule = schedule
+
+    us.save()
 
          

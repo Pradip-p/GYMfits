@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.admin.options import ModelAdmin
 from . models import GymInfromation,UserInformation
-from GYM.models import Trainers,Registration, Schedule
+from GYM.models import Trainers, Schedule
 # Register your models here.
 admin.site.register(UserInformation)
 admin.site.register(Schedule)
