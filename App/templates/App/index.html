@@ -79,7 +79,7 @@
   
 
 
-    {#% include 'App/navbar.html' %#}
+    
     <!-- <div style="height: 113px;"></div> -->
     <div class="slide-one-item home-slider owl-carousel">
       <div class="site-blocks-cover inner-page" style="background-image: url(/static/images/hero_b1_1.jpg);"
@@ -132,9 +132,8 @@
                 </div>
                 {% endfor %}
             </div>
+          </div>
         </div>
-        </div>
-      </div>
     </div>
    
     <div class="site-section">
@@ -146,28 +145,23 @@
         </div>
         <!-- Total GYM's in the GYM  -->
 
-
+        
         <div class="row">
-          {% for info in informations%}
-          <div class="col-md-3 text-center mb-4">
-            
+        {% for info in informations%}
+          <div class="col-md-3 text-center mb-4"> 
             <div class="border p-4 text-with-icon">
               <span class="flaticon-weightlifting icon display-4 mb-4 d-block text-primary"></span>
               <!--  <img src="{{info.images}}" alt="image file"> -->
               <h2 class="h5">{{info.name}}</h2>
-              
               <label>Location:{{info.location}}</label><br>
               <label>Prizes:{{info.pricing}}</label>
               <p><a href="/GYM/index/{{info.id}}">More Details</a></p>
             </div>
           </div>
           {% endfor %}
-        </div>
       </div>
-
     </div>
   </div>
-
   {% include 'App/footer.html' %}
   <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
   <script src="{% static 'js/jquery-migrate-3.0.1.min.js' %}"></script>

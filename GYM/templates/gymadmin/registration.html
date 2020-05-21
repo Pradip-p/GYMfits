@@ -7,8 +7,8 @@
 <div><h2>Registration</h2> </div>
 
 <div>
-    <table class="table table-dark">
-        <thead>
+    <table class="table table-light">
+        <thead class="table-dark">
           <tr>
             <th scope="col">S.N.</th>
             <th scope="col">Name</th>
@@ -26,11 +26,16 @@
         <tbody>
           {#% for now in datas %#}
           <tr>
-            <td>{{datas.user.id}}</td>
-            <td>{{datas.user.name}}</td>
-            <td>{{now.shift}}</td>
-            <td>{{now.time}}</td>
-            <th>{{now.trainer}}</th>
+            <td>{{datas.user.userinformation.id}}</td>
+            <td>{{datas.user.userinformation.name}}</td>
+            <td>{{datas.user.userinformation.phone_number}}</td>
+            <td>{{datas.user.userinformation.email}}</td>
+            <th>{{datas.user.userinformation.address}}</th>
+            <td>{{datas.user.userinformation.gender}}</td>
+            <td>{{datas.user.userinformation.age}}</td>
+            <td>{{datas.schedule.type}}</td>
+            <td>{{datas.schedule.shift}}</td>
+            <td>{{datas.schedule.trainer}}</td>
             <td>
               <a href="#" class="btn btn-warning btn-xs" data-toggle="modal"
                 data-target="#modaledit{{now.id}}">Edit</a>

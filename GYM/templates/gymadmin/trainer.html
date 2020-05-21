@@ -146,48 +146,12 @@
 
                         <form action="/GYM/Trainer_insert/" enctype="multipart/form-data" method="POST">
                             {% csrf_token %}
-
-                            <div class="form-group">
-                                <label>Name:</label>
-                                <input type="text" class="form-control" name="name" required="1">
-                            </div>
-
-                            <div class="form-group">
-                                <label>Phone Number:</label>
-                                <input type="text" class="form-control" name="phone_number" required="1">
-                            </div>
-
-                            <div class="form-group">
-                                <label>Age:</label>
-                                <input type="text" class="form-control" name="age" required="1">
-                            </div>
-                            <div class="form-group">
-                                <label>Trainer Type:</label>
-                                <input type="text" class="form-control" name="trainer_type" required="1">
-                            </div>
-
-                            <div class="form-group">
-                                <div class="form-group">
-                                    <label for="exampleFormControlFile1">Image:</label>
-                                    <input type="file" class="form-control-file" name="pic" id="exampleFormControlFile1">
-                                  </div>
-                            </div>
-                            <div class="form-group">
-                                <label>Address:</label>
-                                <input type="text" class="form-control" name="address" required="1">
-                            </div>
-                            <div class="form-group">
-                                <label>About:</label>
-                                <input type="text" class="form-control" name="about" required="1">
-                            </div>
-
-                            
-                            <div class="form-group">
-                                <button class="btn btn-primary" type="submit">Insert Data</button>
-                            </div>
-                        </form>
-
-
+                            {{form.as_p}}
+                        
+                        <div class="form-group">
+                            <button class="btn btn-primary" type="submit">Insert</button>
+                        </div>
+                    </form>
                     </div>
 
 

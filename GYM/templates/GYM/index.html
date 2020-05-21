@@ -5,32 +5,7 @@
 
 <head>
   
-  <title>{{data.gym.name}}</title>
-  <style>
-    #respond {
-      margin-top: 20px;
-    }
-    
-    #respond input[type='text'],
-    #respond input[type='email'], 
-    #respond textarea {
-      margin-bottom: 10px;
-      display: block;
-      width: 30%;
-    
-      border: 1px solid rgba(0, 0, 0, 0.1);
-      -webkit-border-radius: 5px;
-      -moz-border-radius: 5px;
-      -o-border-radius: 5px;
-      -ms-border-radius: 5px;
-      -khtml-border-radius: 5px;
-      border-radius: 5px;
-    
-      line-height: 1.4em;
-    }
-  </style>
-
-  
+  <title>{{data.gym.name}}</title> 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -57,7 +32,9 @@
 </head>
 
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+
   <div class="site-wrap">
+
     <div class="site-mobile-menu site-navbar-target">
       <div class="site-mobile-menu-header">
         <div class="site-mobile-menu-close mt-3">
@@ -66,15 +43,12 @@
       </div>
       <div class="site-mobile-menu-body"></div>
     </div>
-
-
     <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
 
       <div class="container-fluid">
+
         <div class="d-flex align-items-center">
-      
-          <div class="site-logo"><a href="/GYM/index">{{gym.name}}</a></div>
-  
+          <div class="site-logo"><a href="/GYM/index/{{data.id}}">{{gym.name}}</a></div>
           <div class="ml-auto">
             <nav class="site-navigation position-relative text-right" role="navigation">
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
@@ -91,50 +65,26 @@
                 <li><a href="" class="nav-link">Hello {{user.username}}</a></li>
 
                 {% endif %}
-                <!-- 
-                <li><a href="/GYM/login" class="nav-link">Sign In</a></li>
-                <li><a href="/GYM/signup" class="nav-link">Sign Up</a></li>
-                -->
               </ul>
             </nav>
-          </div>
-          <div class="ml-auto">
-            <nav class="site-navigation position-relative text-right" role="navigation">
-              <ul class="site-menu main-menu site-menu-dark js-clone-nav mr-auto d-none d-lg-block">
-                <li class="cta"><a href="/contact" class="nav-link"><span
-                      class="rounded border border-primary">Contact</span></a></li>
-              </ul>
-            </nav>
-            <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black float-right"><span
-                class="icon-menu h3"></span></a>
           </div>
         </div>
-      </div>
-
+    </div>
     </header>
-
     <a id="bgndVideo" class="player"
       data-property="{videoURL:'http://youtu.be/7lutvYTZk8E',showYTLogo:false, showAnnotations: false, showControls: false, cc_load_policy: false, containment:'#home-section',autoPlay:true, mute:true, startAt:10, stopAt: 36, opacity:1}">
     </a>
-
     <div class="intro-section" id="home-section" style="background-color: #ccc;">
       <div class="container">
         <div class="row align-items-center">
-          <div class="col-lg-8 mx-auto text-center" data-aos="fade-up">
-            
+          <div class="col-lg-8 mx-auto text-center" data-aos="fade-up">    
             <h1>Welcome To {{gym.name}}</h1>
-            
           </div>
         </div>
       </div>
     </div>
-
-
     <div class="site-section section-1">
-
-
       <div class="container">
-
         <div class="row mb-5">
           <div class="col-lg-3">
             <div class="counter d-flex align-items-start mb-5" data-aos="fade-up" data-aos-delay="">
@@ -144,8 +94,6 @@
                 <span>Members</span>
               </div>
             </div>
-
-
           </div>
           <div class="col-lg-3">
             <div class="counter d-flex align-items-start" data-aos="fade-up" data-aos-delay="100">
@@ -157,7 +105,6 @@
             </div>
           </div>
           <div class="col-lg-3">
-
             <div class="counter d-flex align-items-start mb-5" data-aos="fade-up" data-aos-delay="200">
               <div class="icon-wrap"><span class="flaticon-banana text-primary"></span></div>
               <div class="counter-text">
@@ -165,7 +112,6 @@
                 <span>Health Program</span>
               </div>
             </div>
-
           </div>
           <div class="col-lg-3">
             <div class="counter d-flex align-items-start" data-aos="fade-up" data-aos-delay="300">
@@ -181,27 +127,20 @@
           <div class="col-lg-5 mr-auto mb-5 align-self-center">
 
             <div class="mb-5">
-              <h2 class="section-title">Step Up Your Fitness</h2>
-              <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem possimus distinctio ex.
-                Natus totam
-                voluptatibus animi aspernatur ducimus quas obcaecati mollitia quibusdam temporibus culpa dolore
-                molestias blanditiis consequuntur
-                sunt nisi.</p>
+              <h2 class="section-title">{{gym_content.title}}</h2>
+              <p class="mb-5">{{gym_content.about}}</p>
               <p>
-                <a href="/contact" class="btn btn-primary smoothscroll py-3 px-4">Get In Touch</a>
+                <a href="#" class="btn btn-primary smoothscroll py-3 px-4">Get In Touch</a>
               </p>
             </div>
           </div>
-
           <div class="col-lg-6">
             <div class="image-absolute-box">
-
-              <img src="{% static 'images/about_1.jpg' %}" alt="Image" class="img-fluid img-shadow">
+              <img src="{{gym_content.image.url}}" alt="Image" class="img-fluid img-shadow">
             </div>
           </div>
         </div>
       </div>
-
     </div>
     <div class="site-section section-2" id="schedule-section">
       <div class="container">
@@ -210,36 +149,8 @@
             <h2 class="section-title">Schedule</h2>
           </div>
         </div>
-
         <div class="row">
           <div class="col-12">
-            <ul class="nav nav-tabs mb-5 border-bottom-0 justify-content-center tab-list-custom" id="myTab"
-              role="tablist">
-              <li class="nav-item">
-                <a class="nav-link active" id="monday-tab" data-toggle="tab" href="#monday" role="tab"
-                  aria-controls="monday" aria-selected="true">Monday</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="tuesday-tab" data-toggle="tab" href="#tuesday" role="tab"
-                  aria-controls="tuesday" aria-selected="false">Tuesday</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="wednesday-tab" data-toggle="tab" href="#wednesday" role="tab"
-                  aria-controls="wednesday" aria-selected="false">Wednesday</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="wednesday-tab" data-toggle="tab" href="#wednesday" role="tab"
-                  aria-controls="wednesday" aria-selected="false">Thursday</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="wednesday-tab" data-toggle="tab" href="#wednesday" role="tab"
-                  aria-controls="wednesday" aria-selected="false">Friday</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="wednesday-tab" data-toggle="tab" href="#wednesday" role="tab"
-                  aria-controls="wednesday" aria-selected="false">Sunday</a>
-              </li>
-            </ul>
             <div class="tab-content" id="myTabContent">
               <div class="tab-pane fade show active" id="monday" role="tabpanel" aria-labelledby="monday-tab">
                   {% block body %}
@@ -248,7 +159,7 @@
                           <div class=" col md-12">
                               <div class=" jumbotron p-3">
                                   <table class="table table-light">
-                                      <thead >
+                                      <thead class="table-dark">
                                           <tr>
                                               <th scope="col">Type</th>
                                               <th scope="col">Shift</th>
@@ -257,10 +168,8 @@
                                               <th scope="col">Action</th>
                                           </tr>
                                       </thead>
-                                      <tbody>
-                                       
+                                      <tbody>                         
                                           {% for now in datas %}
-                                        
                                           <tr>
                                               <td>{{now.type}}</td>
                                               <td>{{now.shift}}</td>
@@ -299,7 +208,6 @@
                                                   {% endif %}                                         
                                               </th>
                                           </tr>
-              
                                           {% endfor %}
                                         
                                       </tbody>
@@ -310,202 +218,11 @@
                   </div>
                   {% endblock %}
               </div>
-
-              <div class="tab-pane fade" id="tuesday" role="tabpanel" aria-labelledby="tuesday-tab">
-                {#% block body %#}
-                <div class="container">
-                    <div class="row">
-                        <div class=" col md-12">
-                            <div class=" jumbotron p-3">
-                                <table class="table table-light">
-                                    <thead >
-                                        <tr>
-                                            <th scope="col">Type</th>
-                                            <th scope="col">Start Time</th>
-                                            <th scope="col">End Time</th>
-                                            <th scope="col"> Trainer</th>
-                                            <th scope="col">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                      {% for now in datas %}
-                                     
-
-                                      <tr>
-                                          <td>{{now.type}}</td>
-                                          <td>{{now.shift}}</td>
-                                          <td>{{now.time}}</td>
-                                          <td>{{now.trainer}}</td>
-                                          <th><a href="/Gym/{{now.gym.pk}}/schedule/{{now.pk}}"Join Now</th>
-                                      </tr>
-                                      {% endfor %}
-                                  </tbody>
-                                </table>
-                            </div>    
-                        </div>
-                    </div>
-                </div>
-                {#% endblock %#}
-              </div>
-
-              <div class="tab-pane fade" id="wednesday" role="tabpanel" aria-labelledby="wednesday-tab">
-                {#% block body%#}
-                  <div class="container">
-                      <div class="row">
-                          <div class=" col md-12">
-                              <div class=" jumbotron p-3">
-                                  <table class="table table-light">
-                                      <thead >
-                                          <tr>
-                                              <th scope="col">Type</th>
-                                              <th scope="col">Start Time</th>
-                                              <th scope="col">End Time</th>
-                                              <th scope="col"> Trainer</th>
-                                              <th scope="col">Action</th>
-                                          </tr>
-                                      </thead>
-                                      <tbody>
-                                          {#% for now in datas %#}
-                                         
-                                          <tr>
-                                              <td>GYM</td>
-                                              <td>3:00PM</td>
-                                              <td>4:00PM</td>
-                                              <td>Pradip</td>
-                                              <th>Join Now</th>
-                                          </tr>
-              
-                                          {#% endfor %#}
-                                      </tbody>
-                                  </table>
-                              </div>    
-                          </div>
-                      </div>
-                  </div>
-                  {#% endblock%#}
-
-
-              </div>
-              <div class="tab-pane fade" id="thursday" role="tabpanel" aria-labelledby="thursday-tab">
-                {#% block body%#}
-                  <div class="container">
-                      <div class="row">
-                          <div class=" col md-12">
-                              <div class=" jumbotron p-3">
-                                  <table class="table table-light">
-                                      <thead >
-                                          <tr>
-                                              <th scope="col">Type</th>
-                                              <th scope="col">Start Time</th>
-                                              <th scope="col">End Time</th>
-                                              <th scope="col"> Trainer</th>
-                                              <th scope="col">Action</th>
-                                          </tr>
-                                      </thead>
-                                      <tbody>
-                                          {#% for now in datas %#}
-                                         
-                                          <tr>
-                                              <td>GYM</td>
-                                              <td>3:00PM</td>
-                                              <td>4:00PM</td>
-                                              <td>Pradip</td>
-                                              <th>Join Now</th>
-                                          </tr>
-              
-                                          {#% endfor %#}
-                                      </tbody>
-                                  </table>
-                              </div>    
-                          </div>
-                      </div>
-                  </div>
-                  {#% endblock%#}
-
-              </div>
-
-
-              <div class="tab-pane fade" id="friday" role="tabpanel" aria-labelledby="friday-tab">
-                {#% block body%#}
-                <div class="container">
-                    <div class="row">
-                        <div class=" col md-12">
-                            <div class=" jumbotron p-3">
-                                <table class="table table-light">
-                                    <thead >
-                                        <tr>
-                                            <th scope="col">Type</th>
-                                            <th scope="col">Start Time</th>
-                                            <th scope="col">End Time</th>
-                                            <th scope="col"> Trainer</th>
-                                            <th scope="col">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {#% for now in datas %#}
-                                       
-                                        <tr>
-                                            <td>GYM</td>
-                                            <td>3:00PM</td>
-                                            <td>4:00PM</td>
-                                            <td>Pradip</td>
-                                            <th>Join Now</th>
-                                        </tr>
-            
-                                        {#% endfor %#}
-                                    </tbody>
-                                </table>
-                            </div>    
-                        </div>
-                    </div>
-                </div>
-                {#% endblock%#}   
-
-              </div>
-              <div class="tab-pane fade" id="sunday" role="tabpanel" aria-labelledby="sunday-tab">
-                {#% block body%#}
-                <div class="container">
-                    <div class="row">
-                        <div class=" col md-12">
-                            <div class=" jumbotron p-3">
-                                <table class="table table-light">
-                                    <thead >
-                                        <tr>
-                                            <th scope="col">Type</th>
-                                            <th scope="col">Start Time</th>
-                                            <th scope="col">End Time</th>
-                                            <th scope="col"> Trainer</th>
-                                            <th scope="col">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {#% for now in datas %#}
-                                       
-                                        <tr>
-                                            <td>GYM</td>
-                                            <td>3:00PM</td>
-                                            <td>4:00PM</td>
-                                            <td>Pradip</td>
-                                            <th>Join Now</th>
-                                        </tr>
-            
-                                        {#% endfor %#}
-                                    </tbody>
-                                </table>
-                            </div>    
-                        </div>
-                    </div>
-                </div>
-                {#% endblock%#}
-
-              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-
     <div class="site-section" id="trainer-section">
       <div class="container">
         <div class="col-lg-6 mb-5">
@@ -526,51 +243,21 @@
             <h6>{{i.about}}</h6>
             <p class="mb-4 opacity-7"></p>
             <p></p>
-
             </div>
           </div>
           {% endfor %}  
       </div>
     </div>
-  </div>
-
-    <div id="respond">
-      <h3>Leave a Comment</h3>
-      <form action="" method="post" id="commentform">
-          {% csrf_token %}
-        <label for="comment_author" class="required"><h5>Your Name</h5></label>
-        <input type="text" name="name" id="comment_author" value="" tabindex="1" required="required">
     
-        <label for="email" class="required"><h5>Your email</h5></label>
-        <input type="email" name="email" id="email" value="" tabindex="2" required="required">
-    
-        <label for="comment" class="required"><h5>Your Message</h5></label>
-        <textarea name="message" id="comment" rows="10" tabindex="4"  required="required"></textarea>
-    
-        <!-- comment_post_ID value hard-coded as 1 -->
-        <input type="hidden" name="comment_post_ID" value="1" id="comment_post_ID" />
-        <input name="submit" type="submit" value="Submit comment" />
-      </form>
+</div>
+{% include 'App/footer.html' %}
 </div>
 
 
-    {% include 'App/footer.html' %}
-  <footer class="footer-section">
-      <div class="container">
-        <div class="row pt-5 mt-5 text-center">
-          <div class="col-md-12">
-            <div class=" pt-5">
-            
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
 
 
 
-  </div>
+ 
   <!-- .site-wrap -->
 
   <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>

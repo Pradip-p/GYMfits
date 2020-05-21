@@ -7,9 +7,9 @@ from django.contrib import auth
 import datetime
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import GymInfromation,UserInformation
+from App.models import *
 from django.contrib.auth.decorators import login_required
-from App.forms import UserForm, UserInformationForm, ContactForm
+from App.forms import *
 
 from django.contrib.auth import authenticate, login as dj_login
 from django.contrib.sites.shortcuts import get_current_site

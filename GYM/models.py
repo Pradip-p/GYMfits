@@ -7,6 +7,11 @@ from django.contrib.auth.models import User
 
 
 # Create your models here.
+class GymContent(models.Model):
+    title=models.CharField(max_length=20)
+    about=models.TextField(max_length=500)
+    image=models.ImageField(upload_to='images', null=True, blank=True)
+    gym=models.ForeignKey(to=GymInfromation,on_delete=CASCADE)
 
 class Trainers(models.Model):
     name=models.CharField(max_length=20)
@@ -44,7 +49,8 @@ class Schedule(models.Model):
 
 
 class UserSchedule(models.Model):
-    user=models.OneToOneField(to=User, on_delete=CASCADE,null=True, blank=True)
-    schedule=models.OneToOneField(to=Schedule, on_delete=CASCADE,null=True, blank=True)
+    user=models.ForeignKey(to=User, on_delete=CASCADE,null=True, blank=True)
+    schedule=models.ForeignKey(to=Schedule, on_delete=CASCADE,null=True, blank=True)
+    gym=models.ForeignKey(to=GymInfromation, on_delete=CASCADE,null=True, blank=True)
 
 
