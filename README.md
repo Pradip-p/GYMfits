@@ -1,4 +1,6 @@
 # GYMfits
+Make Virtual envirement.
+-->mkviraulenv env
 
 Creating a new project
 ->pip install -r requirements.txt
