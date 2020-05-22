@@ -135,11 +135,11 @@ def index(request,id):
         obj=Schedule.objects.all().prefetch_related().filter(gym__pk=id)
         ob=Trainers.objects.all().prefetch_related().filter(gym__pk=id)
         gym_content=GymContent.objects.prefetch_related().filter(gym__pk=id).first()
-        user_id = request.session.get('user')
-        user=User.objects.get(pk=user_id)
+        #user_id = request.session.get('user')
+        #user=User.objects.get(pk=user_id)
         user_comment=Comment.objects.all().prefetch_related().filter(gym__pk=id)
         contex={
-            'user':user,
+            #'user':user,
             'data':data,
             'gym':gym,
             'datas':obj,
