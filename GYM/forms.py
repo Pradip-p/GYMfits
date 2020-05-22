@@ -1,4 +1,4 @@
-from GYM.models import Schedule, Trainers
+from GYM.models import *
 from App.models import UserInformation
 from django import forms
 from django.forms import ModelForm

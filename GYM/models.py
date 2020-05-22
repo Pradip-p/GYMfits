@@ -28,9 +28,9 @@ class Trainers(models.Model):
         return self.name
 
 class Comment(models.Model):
-    name=models.CharField(max_length=20)
-    email=models.EmailField()
     message=models.TextField()
+    user=models.ForeignKey(to=User, on_delete=CASCADE, null=True, blank=True)
+    gym=models.ForeignKey(to=GymInfromation, on_delete=CASCADE, null=True, blank=True)
 
 
     def __str__(self):
@@ -51,6 +51,5 @@ class Schedule(models.Model):
 class UserSchedule(models.Model):
     user=models.ForeignKey(to=User, on_delete=CASCADE,null=True, blank=True)
     schedule=models.ForeignKey(to=Schedule, on_delete=CASCADE,null=True, blank=True)
-    gym=models.ForeignKey(to=GymInfromation, on_delete=CASCADE,null=True, blank=True)
-
+    
 

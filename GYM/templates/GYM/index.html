@@ -130,7 +130,7 @@
               <h2 class="section-title">{{gym_content.title}}</h2>
               <p class="mb-5">{{gym_content.about}}</p>
               <p>
-                <a href="#" class="btn btn-primary smoothscroll py-3 px-4">Get In Touch</a>
+                <a  class="btn btn-primary smoothscroll py-3 px-4" data-target="#comment">Get In Touch</a>
               </p>
             </div>
           </div>
@@ -248,7 +248,55 @@
           {% endfor %}  
       </div>
     </div>
-    
+</div>
+<div id="#comment" class="modal-content">
+
+
+  <div class="modal-header">
+
+    <h4 class="modal-title">Comment Section</h4>
+
+
+  </div>
+<div class="modal-body">
+  <form action="/GYM/index/{{gym.id}}/" enctype="multipart/form-data" method="POST">
+      {% csrf_token %}
+      <tr>
+        <th>
+          <label for="id_name">Name:</label>
+        </th>
+        <td><input type="text" name="name" value="{{user}}" maxlength="20" 
+        required id="id_name">
+      </td>
+    </tr>
+        <tr>
+          <th
+          ><label for="id_email">Email:</label>
+        </th>
+        <td>
+          <input type="email" name="email" value="{{user.userinformation.email}}" maxlength="254" required id="id_email">
+        </td>
+      </tr>
+        <tr>
+          <th>
+            <label for="id_message">Message:</label>
+          </th>
+          <td>
+            <textarea name="message" cols="40" rows="10" required id="id_message">
+            </textarea>
+      </td>
+    </tr>
+  <div class="form-group">
+      <button class="btn btn-primary" type="submit">Sumbit</button>
+  </div>
+</form>
+</div>
+{% for i in user_comment %}
+<div class="container p-3 my-3 border">
+  <h4>{{i.user}}</h4>
+  <p>{{i.message}}</p>
+</div>
+{% endfor %}
 </div>
 {% include 'App/footer.html' %}
 </div>

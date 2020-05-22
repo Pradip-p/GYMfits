@@ -4,7 +4,6 @@ from App.models import *
 from django.contrib.auth.models import User
 from GYM.forms import *
 from django.contrib.auth import authenticate, login as dj_login
-
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 
@@ -35,7 +34,6 @@ def insert(request):
     if request.method=='POST':
         gym_id = request.session.get('gym_id')
         schedule_form=ScheduleForm(request.POST)
-    
         if schedule_form.is_valid:
             schedule_form.save()
             print("data is sumited") 
@@ -79,7 +77,6 @@ def Trainer_insert(request):
     if request.method == 'POST':
         gym_id = request.session.get('gym_id')
         form= TrainersForm(request.POST)
-        print(form)
         if form.is_valid():
             form.save()
             print('data is insert')
@@ -117,10 +114,7 @@ def admin_login(request):
                 print(user.id)
                 dj_login(request,user)   
                 data=GymInfromation.objects.all().prefetch_related().get(user_id=user.id)  
-                a=data.id
-                print(type(a))
-                print(a)
-                print(data.name)       
+                a=data.id       
                 return redirect('/GYM/gymadmin/a')
             else:
                 return HttpResponse("Your account was inactive.")
@@ -141,23 +135,27 @@ def index(request,id):
         obj=Schedule.objects.all().prefetch_related().filter(gym__pk=id)
         ob=Trainers.objects.all().prefetch_related().filter(gym__pk=id)
         gym_content=GymContent.objects.prefetch_related().filter(gym__pk=id).first()
+        user_id = request.session.get('user')
+        user=User.objects.get(pk=user_id)
+        user_comment=Comment.objects.all().prefetch_related().filter(gym__pk=id)
         contex={
+            'user':user,
             'data':data,
             'gym':gym,
             'datas':obj,
             'ob':ob,
+            'user_comment':user_comment,
             'gym_content':gym_content,
+        
         }
         return  render(request, 'GYM/index.html',contex)
     elif request.method=='POST':
-        name=request.POST.get('name')
-        email=request.POST.get('email')
         message=request.POST.get('message')
-        user=Comment()
-        user.name=name
-        user.email=email
-        user.message=message
-        user.save()
+        user_id = request.session.get('user')
+        user = User.objects.filter(pk=user_id).first()
+        gym=GymInfromation.objects.get(pk=id)
+        comment=Comment(message=message,user=user,gym=gym)
+        comment.save()
         print("thank you for comment")
     return redirect('/GYM/index/'+str(id))
 
@@ -173,14 +171,11 @@ def registration(request,id):
 
 def enroll(request, schedule_id):
     user_id = request.session.get('user')
-    print(user_id)
     schedule_id = schedule_id
-    print(schedule_id)
     user = User.objects.filter(pk=user_id).first()
     schedule = Schedule.objects.filter(pk=schedule_id).first()
-    us = UserSchedule()
-    us.user = user
-    us.schedule = schedule
+    us = UserSchedule(user=user,schedule=schedule)
     us.save()
+    return redirect('/')
 
-    
+  
