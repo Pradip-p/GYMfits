@@ -48,7 +48,7 @@
       <div class="container-fluid">
 
         <div class="d-flex align-items-center">
-          <div class="site-logo"><a href="/GYM/index/{{data.id}}">{{gym.name}}</a></div>
+          <div class="site-logo"><a href="#">{{gym.name}}</a></div>
           <div class="ml-auto">
             <nav class="site-navigation position-relative text-right" role="navigation">
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
@@ -161,6 +161,7 @@
                                   <table class="table table-light">
                                       <thead class="table-dark">
                                           <tr>
+                                            <th scope="col">S.N.</th>
                                               <th scope="col">Type</th>
                                               <th scope="col">Shift</th>
                                               <th scope="col">Time</th>
@@ -171,6 +172,7 @@
                                       <tbody>                         
                                           {% for now in datas %}
                                           <tr>
+                                            <td>{{ forloop.counter }}</td>
                                               <td>{{now.type}}</td>
                                               <td>{{now.shift}}</td>
                                               <td>{{now.time}}</td>
@@ -237,7 +239,7 @@
               <span class="flaticon-weightlifting icon display-4 mb-4 d-block text-primary"></span>
               <!--  <img src="{{info.images}}" alt="image file"> -->
               
-            <img src="{{i.pic.url}}" height="200px" alt="Image" >
+            <img src="{{i.pic}}" height="200px" alt="Image" >
             <h5>Name:{{i.name}}</h5>
             <h6>Phone: {{i.phone_number}}</h6>
             <h6>{{i.about}}</h6>

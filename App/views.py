@@ -23,10 +23,9 @@ from django.core.mail import EmailMessage
 from django.contrib.auth.models import User
 
 
-
-
-
 # Create your views here.
+
+
 def index(request):
     information=GymInfromation.objects.all()
     return render(request,'App/index.html',{'informations':information})

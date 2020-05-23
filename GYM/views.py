@@ -62,12 +62,11 @@ def delete(request,id):
 def trainer(request, id):
     data=Trainers.objects.all().prefetch_related().filter(gym__pk=id)
     #data=Trainers.objects.all()
-    schedule_form=ScheduleForm()
+    trainer_form=TrainersForm()
     gym_id = request.session.get('gym_id')
     contex={
         'datas':data,
-        'form':schedule_form
-
+        'form':trainer_form
     }
     return render(request,'gymadmin/trainer.html',contex)
 
@@ -97,12 +96,16 @@ def trainer_update(request,id):
         data.about = request.POST.get('about')
         data.save()
         print('data is updated')
-        return redirect('trainer')
+        gym_id = request.session.get('gym_id')
+        return redirect('/GYM/trainer/'+str(gym_id))
+        #return redirect('trainer')
 
 def trainer_delete(request,id):
+    gym_id = request.session.get('gym_id')
     Trainers.objects.filter(id=id).delete()
     print('data is deleted')
-    return redirect('trainer')
+    return redirect('/GYM/trainer/'+str(gym_id))
+    #return redirect('trainer')
 #Trainer End
 def admin_login(request):
     if request.method == 'POST':
@@ -161,13 +164,16 @@ def index(request,id):
 
 def registration(request,id):
     if request.method=='GET':
-        data=UserSchedule.objects.all().prefetch_related().filter(gym__pk=1)[0]
+        data=UserSchedule.objects.get(pk=24)
         contex={
-        'datas':data
-        } 
-    elif request.method=="POST":
-        print("user is sumbmitted")
-    return render(request, 'gymadmin/registration.html',contex)
+            'datas':data
+        }
+        return render(request, 'gymadmin/registration.html', contex)
+        #data=UserSchedule.objects.all().prefetch_related().filter(gym__pk=1)[0]
+       # contex={
+       # 'datas':data
+        #} 
+    
 
 def enroll(request, schedule_id):
     user_id = request.session.get('user')

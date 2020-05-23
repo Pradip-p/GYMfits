@@ -26,7 +26,7 @@
         <tbody>
           {#% for now in datas %#}
           <tr>
-            <td>{{datas.user.userinformation.id}}</td>
+            <td>{{ forloop.counter }}</td>
             <td>{{datas.user.userinformation.name}}</td>
             <td>{{datas.user.userinformation.phone_number}}</td>
             <td>{{datas.user.userinformation.email}}</td>
@@ -37,65 +37,10 @@
             <td>{{datas.schedule.shift}}</td>
             <td>{{datas.schedule.trainer}}</td>
             <td>
-              <a href="#" class="btn btn-warning btn-xs" data-toggle="modal"
-                data-target="#modaledit{{now.id}}">Edit</a>
-
               <a href="/GYM/delete/{{ now.id }}" class="btn btn-danger btn-xs"
                 onclick="return confirm('Are You Sure For Delete?')">Delete</a>
             </td>
-
           </tr>
-
-
-
-          <div id="modaledit{{now.id}}" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h4 class="modal-title">Updated Information</h4>
-                </div>
-                <div class="modal-body">
-                  
-                  <form action="/GYM/update/{{now.id}}" method="POST">
-                    {% csrf_token %}
-
-                    <div class="form-group">
-                      <label>Type:</label>
-                      <input type="hidden" name="type" value="type">
-                      <input type="text" class="form-control" name="type" required="1" value="{{now.type}}">
-                    </div>
-                    <div class="form-group">
-                      <label>Shift:</label>
-                      <input type="text" class="form-control" name="shift" required="1" value="{{now.shift}}">
-                    </div>
-                    <div class="form-group">
-                      <label>Time:</label>
-                      <input type="text" class="form-control" name="time" required="1" value="{{now.time}}">
-                    </div>
-                    <div class="form-group">
-                      <label>Trainer:</label>
-                      <select name="trainer">
-                        <option selected="selected" >Objects on below:</option>
-                        {% for i in objs %}
-                            <option value=" " >{{i.name}}</option>
-                        {% endfor %}
-                        </select>
-                      
-      
-                    </div>
-
-                    <div class="form-group">
-                      <button class="btn btn-primary" type="submit">Updated</button>
-                    </div>
-                   
-                  </form>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-              </div>
-            </div>
-          </div>
           {#% endfor %#}
         </tbody>
       </table>

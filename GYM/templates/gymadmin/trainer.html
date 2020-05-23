@@ -24,6 +24,7 @@
             <table class="table table-dark">
                 <thead>
                     <tr>
+                        <th scope="col">S.N.</th>
                         <th scope="col">Name</th>
                         <th scope="col">Phone Number</th>
                         <th scope="col">Age</th>
@@ -38,11 +39,12 @@
 
                     {% for now in datas %}
                     <tr>
+                        <th> {{ forloop.counter }}</th>
                         <td>{{now.name}}</td>
                         <td>{{now.phone_number}}</td>
                         <td>{{now.age}}</td>
                         <td>{{now.trainer_type}}</td>
-                        <th><img src="{{now.pic.url}}" alt="Image" height="50px" ></th>
+                        <th><img src="" alt="Image" height="50px" ></th>
                         <th>{{now.address}}</th>
                         <th>{{now.about}}</th>
                         <td>
@@ -91,7 +93,7 @@
                                         <div class="form-group">
                                             <div class="form-group">
                                                 <label for="exampleFormControlFile1">Image:</label>
-                                                <input type="file" class="form-control-file" name="pic" value="{{now.pic.url}}" id="exampleFormControlFile1">
+                                                <input type="file" class="form-control-file" name="pic" value="{{now.pic}}" id="exampleFormControlFile1">
                                              </div>
                                         </div>
                                         <div class="form-group">
@@ -119,9 +121,6 @@
                                 {% endif %}
                             
                                 <p><a href="#">Return to home</a></p>
-                                
-
-
                             </div>
                         </div>
                     </div>
@@ -131,30 +130,19 @@
         </div>
         <div id="myModal" class="modal fade" role="dialog">
             <div class="modal-dialog">
-
-
                 <div class="modal-content">
-
-
                     <div class="modal-header">
                         <h4 class="modal-title">Add Trainer</h4>
                     </div>
-
-
                     <div class="modal-body">
-
-
                         <form action="/GYM/Trainer_insert/" enctype="multipart/form-data" method="POST">
                             {% csrf_token %}
-                            {{form.as_p}}
-                        
+                            {{form.as_p}} 
                         <div class="form-group">
                             <button class="btn btn-primary" type="submit">Insert</button>
                         </div>
                     </form>
                     </div>
-
-
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
