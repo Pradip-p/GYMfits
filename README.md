@@ -1,4 +1,5 @@
-# GYMfits
+## GYMfits
+```
 Make Virtual envirement.
 -->mkviraulenv env
 
@@ -13,5 +14,4 @@ Admin: Create super user
 
 Run Application:
 ->python manage.py runserver
-
-
+```
