@@ -49,8 +49,6 @@
         <div class="col-lg-6 col-md-6 col-sm-6">
  
             <h4>Login</h4><br><br>
-            
- 
             {% if messages %}
                 {% for message in messages %}
                     <p class="alert alert-info">{{ message }}</p>
@@ -83,13 +81,14 @@
             <h4>Related Links</h4>
             <p>
                 <a href="/password-reset/">Forgot Password?</a> <br>
-                <a href="/register/">Create new account.</a> <br>
+                <a href="/signup/">Create new account.</a> <br>
                 <a href="/contact/">Feedback</a>
             </p>
+            <a href="#">
+            <button type="submit" class="btn btn-primary">login with facebook</button>
+        </a>
         </div>
- 
     </div>
- 
 {% endblock %}
 {% include 'App/footer.html' %}
   <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>

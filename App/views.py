@@ -49,7 +49,7 @@ def login(request):
             print("They used username: {} and password: {}".format(username,password))
             return HttpResponse("Invalid login details given")
     else:      
-        return render(request, 'GYM/login.html') 
+        return render(request, 'App/login.html') 
             
 def signup(request):
     
