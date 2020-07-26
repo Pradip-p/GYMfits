@@ -14,17 +14,12 @@ Make Virtual envirement.
 One to two paragraph statement about your product and what it does.
 
 ![](header.png)
-
-
-## Installation
-
-OS X & Linux:
-
-```sh
-npm install my-crazy-module --save
 ```
 
-Windows:
+## Installation
+The Code is written in Python 3.7.0. If you don't have Python installed you can find it [here](https://www.python.org/downloads/). If you are using a lower version of Python you can upgrade using the pip package, ensuring you have the latest version of pip. To install the required packages and libraries, run this command in the project directory after cloning the repository:
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install requirements file.
+
 
 ```bash
 * pip install -r requirements.txt
@@ -38,21 +33,6 @@ Windows:
 * python manage.py runserver
 
 ```
-## Usage example
-
-A few motivating and useful examples of how your product can be used. Spice this up with code blocks and potentially more screenshots.
-
-_For more examples and usage, please refer to the [Wiki][wiki]._
-
-## Development setup
-
-Describe how to install all development dependencies and how to run an automated test-suite of some kind. Potentially do this for multiple platforms.
-
-```sh
-make install
-npm test
-```
-
 
 ## Meta
 
