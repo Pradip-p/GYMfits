@@ -135,8 +135,8 @@ MEDIA_URL = '/media/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'djangod14@gmail.com'
-EMAIL_HOST_PASSWORD = 'django@ncit1998'
+EMAIL_HOST_USER = 'Enter your Email'
+EMAIL_HOST_PASSWORD = 'Enter your Email Password'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL=False
