@@ -10,7 +10,7 @@ Jinja2==2.11.2
 MarkupSafe==1.1.1
 mysqlclient==1.4.6
 Pillow==7.1.2
-Pygments==2.6.1
+Pygments==2.7.4
 PyJWT==1.7.1
 pytz==2019.3
 sqlparse==0.3.1
