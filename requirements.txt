@@ -1,6 +1,6 @@
 asgiref==3.2.7
 click==7.1.1
-Django==2.2.10
+Django==4.2.26
 djangorestframework==3.11.2
 djangorestframework-jwt==1.11.0
 Flask==1.1.2
